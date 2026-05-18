@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.class
+*.so
+venv/
+.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Database
+*.db
+
+# Temp files
+*.tmp
+*.bak
+*.backup_*
+fix_*.py
+modify_*.py
+check_*.py
+add_*.py
+test_*.sh
+test_*.py

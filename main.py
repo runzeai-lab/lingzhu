@@ -38,8 +38,9 @@ class MCPRegisterRequest(BaseModel):
     args: Optional[List[str]] = None
 from offline_autonomy import OfflineAutonomy
 from docker_sandbox import DockerSandbox
+from ima_knowledge_engine import IMAKnowledgeEngine
 
-app = FastAPI(title="灵助 V180 - 多Agent统一管理系统")
+app = FastAPI(title="灵助 V180.3 - 多Agent统一管理系统")
 
 # ==================== 多Agent配置 ====================
 AGENTS_CONFIG = {
@@ -320,6 +321,9 @@ mcp_engine = MCPDualModeEngine(mode="stdio", sse_port=8080)
 # Docker 安全沙箱
 sandbox = DockerSandbox()
 offline_autonomy = OfflineAutonomy()
+
+# IMA 知识库引擎
+ima_engine = IMAKnowledgeEngine()
 
 # ==================== 模块5.12：离线自治系统测试 ====================
 
@@ -938,7 +942,7 @@ async def root():
     """根路径"""
     return {
         "service": "灵助 V180 - 多Agent统一管理系统",
-        "version": "V180.0",
+        "version": "V180.3",
         "role": "中央调度中心 + 灵魂赋能者 + 技能分享平台",
         "endpoints": {
             "跨空间调度": "/agents/{agent_name}/soul|memory|status",
@@ -949,12 +953,62 @@ async def root():
         }
     }
 
+
+# ==================== IMA 知识库引擎端点 ====================
+
+@app.get("/ima/stats")
+async def ima_stats():
+    """获取 IMA 知识库引擎状态"""
+    return ima_engine.get_stats()
+
+@app.get("/ima/search_kb")
+async def ima_search_kb(query: str = "", limit: int = 20):
+    """搜索知识库"""
+    result = await ima_engine.search_knowledge_base(query, limit)
+    return result
+
+@app.get("/ima/kb_info")
+async def ima_kb_info(ids: str):
+    """获取知识库详情（逗号分隔的ID列表）"""
+    id_list = [i.strip() for i in ids.split(",") if i.strip()]
+    result = await ima_engine.get_knowledge_base_info(id_list)
+    return result
+
+@app.get("/ima/list_knowledge")
+async def ima_list_knowledge(kb_id: str, folder_id: str = "", limit: int = 50, cursor: str = ""):
+    """浏览知识库内容列表"""
+    result = await ima_engine.list_knowledge(kb_id, folder_id, limit, cursor)
+    return result
+
+@app.get("/ima/note_content")
+async def ima_note_content(kb_id: str, doc_id: str, format: str = "text"):
+    """获取笔记内容"""
+    result = await ima_engine.get_note_content(kb_id, doc_id, format)
+    return result
+
+@app.get("/ima/search_notes")
+async def ima_search_notes(kb_id: str, query: str = "", limit: int = 20):
+    """搜索知识库中的笔记"""
+    result = await ima_engine.search_notes(kb_id, query, limit)
+    return result
+
+@app.post("/ima/batch_notes")
+async def ima_batch_notes(request: dict):
+    """批量获取笔记内容"""
+    kb_id = request.get("kb_id", "")
+    doc_ids = request.get("doc_ids", [])
+    format_type = request.get("format", "text")
+    if not kb_id or not doc_ids:
+        return {"status": "error", "message": "kb_id and doc_ids are required"}
+    result = await ima_engine.batch_get_notes(kb_id, doc_ids, format_type)
+    return result
+
 @app.get("/health")
 async def health_check():
     """健康检查"""
     return {
         "status": "healthy",
-        "version": "V180.0",
+        "version": "V180.3",
         "timestamp": datetime.now().isoformat(),
         "role": "Multi-Agent Controller"
     }
