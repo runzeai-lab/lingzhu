@@ -39,6 +39,7 @@ class MCPRegisterRequest(BaseModel):
 from offline_autonomy import OfflineAutonomy
 from docker_sandbox import DockerSandbox
 from ima_knowledge_engine import IMAKnowledgeEngine
+from quantclaw_bridge import QuantClawBridge
 
 app = FastAPI(title="灵助 V180.3 - 多Agent统一管理系统")
 
@@ -321,6 +322,9 @@ mcp_engine = MCPDualModeEngine(mode="stdio", sse_port=8080)
 # Docker 安全沙箱
 sandbox = DockerSandbox()
 offline_autonomy = OfflineAutonomy()
+
+# QuantClaw 桥接引擎
+quantclaw_bridge = QuantClawBridge()
 
 # IMA 知识库引擎
 ima_engine = IMAKnowledgeEngine()
@@ -1002,6 +1006,133 @@ async def ima_batch_notes(request: dict):
         return {"status": "error", "message": "kb_id and doc_ids are required"}
     result = await ima_engine.batch_get_notes(kb_id, doc_ids, format_type)
     return result
+
+
+# ==================== QuantClaw 桥接引擎端点 ====================
+
+@app.get("/quantclaw/health")
+async def quantclaw_health():
+    """检查 QuantClaw 服务健康状态"""
+    result = await quantclaw_bridge.health_check()
+    return {"status": "success", "data": result}
+
+@app.get("/quantclaw/status")
+async def quantclaw_status():
+    """获取 QuantClaw 运行状态"""
+    result = await quantclaw_bridge.get_status()
+    return {"status": "success", "data": result}
+
+@app.get("/quantclaw/config")
+async def quantclaw_config(path: str = ""):
+    """获取 QuantClaw 配置"""
+    result = await quantclaw_bridge.get_config(path)
+    return {"status": "success", "data": result}
+
+@app.post("/quantclaw/agent/request")
+async def quantclaw_agent_request(request: dict):
+    """发送消息给 QuantClaw Agent"""
+    message = request.get("message", "")
+    session_id = request.get("session_id", "default")
+    model = request.get("model")
+    if not message:
+        return {"status": "error", "message": "message is required"}
+    result = await quantclaw_bridge.send_agent_request(message, session_id, model)
+    return {"status": "success", "data": result}
+
+@app.post("/quantclaw/agent/stop")
+async def quantclaw_agent_stop(request: dict):
+    """停止 QuantClaw Agent"""
+    session_id = request.get("session_id", "default")
+    result = await quantclaw_bridge.stop_agent(session_id)
+    return {"status": "success", "data": result}
+
+@app.get("/quantclaw/sessions")
+async def quantclaw_list_sessions():
+    """列出 QuantClaw 所有会话"""
+    result = await quantclaw_bridge.list_sessions()
+    return {"status": "success", "data": result}
+
+@app.get("/quantclaw/sessions/history")
+async def quantclaw_session_history(session_id: str = "default"):
+    """获取 QuantClaw 会话历史"""
+    result = await quantclaw_bridge.get_session_history(session_id)
+    return {"status": "success", "data": result}
+
+@app.post("/quantclaw/sessions/delete")
+async def quantclaw_delete_session(request: dict):
+    """删除 QuantClaw 会话"""
+    session_id = request.get("session_id", "")
+    if not session_id:
+        return {"status": "error", "message": "session_id is required"}
+    result = await quantclaw_bridge.delete_session(session_id)
+    return {"status": "success", "data": result}
+
+@app.post("/quantclaw/sessions/reset")
+async def quantclaw_reset_session(request: dict):
+    """重置 QuantClaw 会话"""
+    session_id = request.get("session_id", "default")
+    result = await quantclaw_bridge.reset_session(session_id)
+    return {"status": "success", "data": result}
+
+@app.get("/quantclaw/plugins")
+async def quantclaw_list_plugins():
+    """列出 QuantClaw 所有插件"""
+    result = await quantclaw_bridge.list_plugins()
+    return {"status": "success", "data": result}
+
+@app.get("/quantclaw/plugins/tools")
+async def quantclaw_plugin_tools():
+    """列出 QuantClaw 插件工具"""
+    result = await quantclaw_bridge.list_plugin_tools()
+    return {"status": "success", "data": result}
+
+@app.get("/quantclaw/plugins/services")
+async def quantclaw_plugin_services():
+    """列出 QuantClaw 插件服务"""
+    result = await quantclaw_bridge.list_plugin_services()
+    return {"status": "success", "data": result}
+
+@app.get("/quantclaw/plugins/providers")
+async def quantclaw_plugin_providers():
+    """列出 QuantClaw 插件 Provider"""
+    result = await quantclaw_bridge.list_plugin_providers()
+    return {"status": "success", "data": result}
+
+@app.get("/quantclaw/plugins/commands")
+async def quantclaw_plugin_commands():
+    """列出 QuantClaw 插件命令"""
+    result = await quantclaw_bridge.list_plugin_commands()
+    return {"status": "success", "data": result}
+
+@app.post("/quantclaw/config/reload")
+async def quantclaw_reload_config():
+    """重新加载 QuantClaw 配置"""
+    result = await quantclaw_bridge.reload_config()
+    return {"status": "success", "data": result}
+
+@app.get("/quantclaw/models")
+async def quantclaw_list_models():
+    """列出 QuantClaw 可用模型"""
+    result = await quantclaw_bridge.list_models()
+    return {"status": "success", "data": result}
+
+@app.post("/quantclaw/chat/completions")
+async def quantclaw_chat_completions(request: dict):
+    """通过 QuantClaw 调用 OpenAI 兼容接口"""
+    messages = request.get("messages", [])
+    model = request.get("model", "qwen-max")
+    temperature = request.get("temperature", 0.7)
+    max_tokens = request.get("max_tokens", 4096)
+    if not messages:
+        return {"status": "error", "message": "messages is required"}
+    result = await quantclaw_bridge.chat_completions(messages, model, temperature, max_tokens)
+    return {"status": "success", "data": result}
+
+@app.get("/quantclaw/stats")
+async def quantclaw_bridge_stats():
+    """获取 QuantClaw 桥接引擎统计信息"""
+    return quantclaw_bridge.get_stats()
+
 
 @app.get("/health")
 async def health_check():
