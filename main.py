@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-灵助 V180 - 多Agent统一管理系统
+灵助 V181.0 - 多Agent统一管理系统
 中央调度中心 + 灵魂赋能者 + 技能分享平台
 """
 
@@ -41,11 +41,11 @@ from docker_sandbox import DockerSandbox
 from ima_knowledge_engine import IMAKnowledgeEngine
 from quantclaw_bridge import QuantClawBridge
 
-app = FastAPI(title="灵助 V180.3 - 多Agent统一管理系统")
+app = FastAPI(title="灵助 V181.0 - 多Agent统一管理系统")
 
 # ==================== 多Agent配置 ====================
 AGENTS_CONFIG = {
-    "lingzhu": {"port": 8000, "version": "V180", "url": "http://localhost:8000"},
+    "lingzhu": {"port": 8000, "version": "V181.0", "url": "http://localhost:8000"},
     "daonovice": {"port": 8088, "version": "V2.0", "url": "http://localhost:8088"},
     "hermes_agent": {"port": 8888, "version": "V3.0", "url": "http://localhost:8888"},
     "hermes": {"port": 5000, "version": "V2.0", "url": "http://localhost:5000"},
@@ -167,27 +167,27 @@ SKILLS_LIBRARY = {
     "版本管理": {
         "description": "Git版本控制、CHANGELOG、版本标签",
         "file": "VERSION_MANAGEMENT.md",
-        "version": "V180"
+        "version": "V181.0"
     },
     "端口管理": {
         "description": "端口分配、冲突检测、文档化",
         "file": "PORT_MANAGEMENT.md",
-        "version": "V180"
+        "version": "V181.0"
     },
     "灵魂升级": {
         "description": "SOUL.md迭代升级方法",
         "file": "SOUL_UPGRADE.md",
-        "version": "V180"
+        "version": "V181.0"
     },
     "记忆管理": {
         "description": "MEMORY.md长期记忆机制",
         "file": "MEMORY_MANAGEMENT.md",
-        "version": "V180"
+        "version": "V181.0"
     },
     "健康监控": {
         "description": "/health端点、自动重启",
         "file": "HEALTH_MONITOR.md",
-        "version": "V180"
+        "version": "V181.0"
     }
 }
 
@@ -945,8 +945,8 @@ async def auto_rollback(skill_name: str, current_performance: float, threshold: 
 async def root():
     """根路径"""
     return {
-        "service": "灵助 V180 - 多Agent统一管理系统",
-        "version": "V180.3",
+        "service": "灵助 V181.0 - 多Agent统一管理系统",
+        "version": "V181.0",
         "role": "中央调度中心 + 灵魂赋能者 + 技能分享平台",
         "endpoints": {
             "跨空间调度": "/agents/{agent_name}/soul|memory|status",
@@ -1139,7 +1139,7 @@ async def health_check():
     """健康检查"""
     return {
         "status": "healthy",
-        "version": "V180.3",
+        "version": "V181.0",
         "timestamp": datetime.now().isoformat(),
         "role": "Multi-Agent Controller"
     }
