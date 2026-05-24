@@ -1,0 +1,71 @@
+[    1062ms] [INFO] 框架和 SDK 输出的日志默认不展示，可在框架配置文件中设置开启，详见 https://doc.weixin.qq.com/doc/w3_AWkASAb9APAr8IdJI5VS0OyqetUE6?scode=ANAAyQcbAAgB8qKjm9AWkASAb9APA @ https://fe-static.xhscdn.com/formula-static/ugc/public/resource/js/4325.c9d005ff.js:118
+[    1325ms] [LOG] Error @ :2
+[    2158ms] [LOG] Error @ :2
+[    2370ms] [LOG] Error @ :2
+[    2554ms] [LOG] Error @ :2
+[    3702ms] [ERROR] Failed to load resource: the server responded with a status of 401 () @ https://creator.xiaohongshu.com/api/galaxy/user/info:0
+[    4212ms] [INFO] 框架和 SDK 输出的日志默认不展示，可在框架配置文件中设置开启，详见 https://doc.weixin.qq.com/doc/w3_AWkASAb9APAr8IdJI5VS0OyqetUE6?scode=ANAAyQcbAAgB8qKjm9AWkASAb9APA @ https://fe-static.xhscdn.com/formula-static/ugc/public/resource/js/4325.c9d005ff.js:118
+[    4334ms] [LOG] Error @ :2
+[    5980ms] [LOG] Error @ :2
+[    6999ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://creator.xiaohongshu.com/login?source=&redirectReason=401&lastUrl=%252Fpublish%252Fpublish:0
+[    8073ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    8077ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    8079ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    8089ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    8089ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    8089ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    8090ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    8090ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[   17542ms] [LOG] Error @ :2
+[  124841ms] [LOG] Error @ :2
+[  127207ms] [LOG] Error @ :2
+[  607159ms] [LOG] Error @ :2
+[  724978ms] [LOG] Error @ :2
+[ 1189763ms] [LOG] Error @ :2
+[ 1191932ms] [LOG] Error @ :2
+[ 1196335ms] [LOG] Error @ :2
+[ 1197446ms] [LOG] Error @ :2
+[ 1199729ms] [LOG] Error @ :2
+[ 1200848ms] [LOG] Error @ :2
+[ 1203077ms] [LOG] Error @ :2
+[ 1204386ms] [LOG] Error @ :2
+[ 1205485ms] [LOG] Error @ :2
+[ 1206591ms] [LOG] Error @ :2
+[ 1207563ms] [LOG] Error @ :2
+[ 1222043ms] [LOG] Error @ :2
+[ 1223195ms] [LOG] Error @ :2
+[ 1226636ms] [LOG] Error @ :2
+[ 1228543ms] [LOG] Error @ :2
+[ 1231893ms] [LOG] Error @ :2
+[ 1234677ms] [LOG] Error @ :2
+[ 1235782ms] [LOG] Error @ :2
+[ 1238559ms] [LOG] Error @ :2
+[ 1239683ms] [LOG] Error @ :2
+[ 1240840ms] [LOG] Error @ :2
+[ 1258751ms] [LOG] Error @ :2
+[ 1259528ms] [INFO] 框架和 SDK 输出的日志默认不展示，可在框架配置文件中设置开启，详见 https://doc.weixin.qq.com/doc/w3_AWkASAb9APAr8IdJI5VS0OyqetUE6?scode=ANAAyQcbAAgB8qKjm9AWkASAb9APA @ https://fe-static.xhscdn.com/formula-static/ugc/public/resource/js/4325.c9d005ff.js:118
+[ 1259668ms] [LOG] Error @ :2
+[ 1259935ms] [LOG] Error @ :2
+[ 1261586ms] [LOG] Error @ :2
+[ 1262540ms] [LOG] Error @ :2
+[ 1262907ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[ 1262908ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[ 1262908ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[ 1262909ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[ 1262909ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[ 1262910ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[ 1262912ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[ 1262913ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[ 1264920ms] [LOG] Error @ :2
+[ 1265410ms] [LOG] Error @ :2
+[ 1271736ms] [TIMEEND] 实时竞速: 7198.3818359375 ms @ https://fe-static.xhscdn.com/formula-static/ugc/public/resource/js/index.8e3ea249.js:0
+[ 1272873ms] [LOG] Error @ :2
+[ 1300817ms] [LOG] Error @ :2
+[ 1337779ms] TypeError: Cannot set properties of undefined (setting '__hp_creator_tab_hit')
+    at markHit (https://fe-static.xhscdn.com/formula-static/ugc/public/resource/js/4325.c9d005ff.js:192:62490)
+    at o (https://fe-static.xhscdn.com/formula-static/ugc/public/resource/js/4325.c9d005ff.js:192:54279)
+    at HTMLDivElement.<anonymous> (https://fe-static.xhscdn.com/formula-static/ugc/public/resource/js/4325.c9d005ff.js:192:58733)
+    at eval (eval at <anonymous> (eval at evaluate (:302:30)), <anonymous>:1:39)
+    at eval (eval at evaluate (:302:30), <anonymous>:2:29)
+    at UtilityScript.evaluate (<anonymous>:304:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)

@@ -1,0 +1,20 @@
+[    3008ms] [INFO] 框架和 SDK 输出的日志默认不展示，可在框架配置文件中设置开启，详见 https://doc.weixin.qq.com/doc/w3_AWkASAb9APAr8IdJI5VS0OyqetUE6?scode=ANAAyQcbAAgB8qKjm9AWkASAb9APA @ https://fe-static.xhscdn.com/formula-static/ugc/public/resource/js/4325.c9d005ff.js:118
+[    3377ms] [LOG] Error @ :2
+[    6221ms] [LOG] Error @ :2
+[    6320ms] [LOG] Error @ :2
+[    6436ms] [ERROR] Failed to load resource: the server responded with a status of 401 () @ https://creator.xiaohongshu.com/api/galaxy/user/info:0
+[    7752ms] [INFO] 框架和 SDK 输出的日志默认不展示，可在框架配置文件中设置开启，详见 https://doc.weixin.qq.com/doc/w3_AWkASAb9APAr8IdJI5VS0OyqetUE6?scode=ANAAyQcbAAgB8qKjm9AWkASAb9APA @ https://fe-static.xhscdn.com/formula-static/ugc/public/resource/js/4325.c9d005ff.js:118
+[    7944ms] [LOG] Error @ :2
+[    8337ms] [LOG] Error @ :2
+[   10879ms] [LOG] Error @ :2
+[   12129ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://creator.xiaohongshu.com/login?source=&redirectReason=401&lastUrl=%252Fcreator%252Fnotes:0
+[   13141ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[   13141ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[   13141ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[   13142ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[   13142ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[   13142ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[   13142ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[   13144ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[   15362ms] [LOG] Error @ :2
+[   21406ms] [LOG] Error @ :2

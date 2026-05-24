@@ -1,0 +1,44 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e5]:
+      - img [ref=e6]
+      - generic [ref=e9]: 创作服务平台
+    - link "创作百科" [ref=e11] [cursor=pointer]:
+      - /url: /creator/encyclopedia?from_login=true
+  - generic [ref=e12]:
+    - generic [ref=e13]:
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - text: 加入我们
+          - text: 解锁创作者专属功能
+        - text: 让创作发布、数据分析、商业变现更高效。
+      - generic [ref=e45]:
+        - img [ref=e46] [cursor=pointer]
+        - generic [ref=e47]:
+          - generic [ref=e50] [cursor=pointer]: 短信登录
+          - generic [ref=e52]:
+            - generic [ref=e53]:
+              - list [ref=e56] [cursor=pointer]:
+                - textbox "请选择选项" [ref=e57]: "+86"
+                - generic [ref=e58]:
+                  - img
+              - textbox "手机号" [active] [ref=e60]
+            - generic [ref=e61]:
+              - textbox "验证码" [ref=e62]
+              - generic [ref=e66]: 发送验证码
+            - generic [ref=e67] [cursor=pointer]: 收不到验证码？
+          - button "登 录" [ref=e68] [cursor=pointer]:
+            - generic [ref=e69]: 登 录
+          - generic [ref=e70]:
+            - checkbox [ref=e71]
+            - generic [ref=e72]: 登录即同意
+            - link "用户协议" [ref=e73] [cursor=pointer]:
+              - /url: https://agree.xiaohongshu.com/h5/terms/ZXXY20260422001/-1
+            - generic [ref=e74]: 和
+            - link "隐私政策" [ref=e75] [cursor=pointer]:
+              - /url: https://agree.xiaohongshu.com/h5/terms/ZXXY20260511001/-1
+    - generic [ref=e76]:
+      - link "关于小红书" [ref=e78] [cursor=pointer]:
+        - /url: https://www.xiaohongshu.com/protocols/about?language=zh-CN
+      - link "沪ICP备 13030189号 Copyright © 2014-2026 行吟信息科技（上海）有限公司" [ref=e80] [cursor=pointer]:
+        - /url: //icp.chinaz.com/info?q=xiaohongshu.com

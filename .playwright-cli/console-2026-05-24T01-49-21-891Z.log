@@ -1,0 +1,63 @@
+[     694ms] [INFO] 框架和 SDK 输出的日志默认不展示，可在框架配置文件中设置开启，详见 https://doc.weixin.qq.com/doc/w3_AWkASAb9APAr8IdJI5VS0OyqetUE6?scode=ANAAyQcbAAgB8qKjm9AWkASAb9APA @ https://fe-static.xhscdn.com/formula-static/ugc/public/resource/js/4325.c9d005ff.js:118
+[     828ms] [LOG] Error @ :2
+[    1198ms] [LOG] Error @ :2
+[    1739ms] [ERROR] Failed to load resource: the server responded with a status of 401 () @ https://creator.xiaohongshu.com/api/galaxy/user/info:0
+[    2242ms] [LOG] Error @ :2
+[    2256ms] [LOG] Error @ :2
+[    2390ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://creator.xiaohongshu.com/login?lastUrl=%252Fpublish%252Fpublish&source:0
+[    2724ms] [INFO] 框架和 SDK 输出的日志默认不展示，可在框架配置文件中设置开启，详见 https://doc.weixin.qq.com/doc/w3_AWkASAb9APAr8IdJI5VS0OyqetUE6?scode=ANAAyQcbAAgB8qKjm9AWkASAb9APA @ https://fe-static.xhscdn.com/formula-static/ugc/public/resource/js/4325.c9d005ff.js:118
+[    2791ms] [LOG] Error @ :2
+[    2891ms] [LOG] Error @ :2
+[    2932ms] [LOG] Error @ :2
+[    3405ms] [LOG] Error @ :2
+[    3464ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://creator.xiaohongshu.com/login?source=&redirectReason=401&lastUrl=%252Fpublish%252Fpublish:0
+[    4753ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    4783ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    4783ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    4784ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    4785ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    4787ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    4788ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    4790ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    6802ms] [LOG] Error @ :2
+[   15892ms] [LOG] Error @ :2
+[   56820ms] [LOG] Error @ :2
+[   57839ms] [LOG] Error @ :2
+[   58963ms] [LOG] Error @ :2
+[   60065ms] [LOG] Error @ :2
+[   66638ms] [LOG] Error @ :2
+[   71018ms] [LOG] Error @ :2
+[   72105ms] [LOG] Error @ :2
+[   74299ms] [LOG] Error @ :2
+[   75418ms] [LOG] Error @ :2
+[   76697ms] [LOG] Error @ :2
+[   77793ms] [LOG] Error @ :2
+[   82162ms] [LOG] Error @ :2
+[   83241ms] [LOG] Error @ :2
+[   85432ms] [LOG] Error @ :2
+[   86737ms] [LOG] Error @ :2
+[   90008ms] [LOG] Error @ :2
+[   92176ms] [LOG] Error @ :2
+[   94380ms] [LOG] Error @ :2
+[   96698ms] [LOG] Error @ :2
+[   97824ms] [LOG] Error @ :2
+[   98905ms] [LOG] Error @ :2
+[   99996ms] [LOG] Error @ :2
+[  101081ms] [LOG] Error @ :2
+[  102205ms] [LOG] Error @ :2
+[  104412ms] [LOG] Error @ :2
+[  107879ms] [LOG] Error @ :2
+[  110074ms] [LOG] Error @ :2
+[  114459ms] [LOG] Error @ :2
+[  115565ms] [LOG] Error @ :2
+[  116768ms] [LOG] Error @ :2
+[  117847ms] [LOG] Error @ :2
+[  121002ms] [LOG] Error @ :2
+[  123044ms] [LOG] Error @ :2
+[  123076ms] [LOG] Error @ :2
+[  126205ms] [LOG] Error @ :2
+[  132816ms] [LOG] Error @ :2
+[  133888ms] [LOG] Error @ :2
+[  135328ms] [LOG] Error @ :2
+[  137861ms] [LOG] Error @ :2
+[  138951ms] [LOG] Error @ :2

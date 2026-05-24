@@ -1,0 +1,97 @@
+[    1072ms] [INFO] 框架和 SDK 输出的日志默认不展示，可在框架配置文件中设置开启，详见 https://doc.weixin.qq.com/doc/w3_AWkASAb9APAr8IdJI5VS0OyqetUE6?scode=ANAAyQcbAAgB8qKjm9AWkASAb9APA @ https://fe-static.xhscdn.com/formula-static/ugc/public/resource/js/4325.c9d005ff.js:118
+[    1298ms] [LOG] Error @ :2
+[    2029ms] [LOG] Error @ :2
+[    2839ms] [LOG] Error @ :2
+[    2974ms] [ERROR] Failed to load resource: the server responded with a status of 401 () @ https://creator.xiaohongshu.com/api/galaxy/user/info:0
+[    3511ms] [INFO] 框架和 SDK 输出的日志默认不展示，可在框架配置文件中设置开启，详见 https://doc.weixin.qq.com/doc/w3_AWkASAb9APAr8IdJI5VS0OyqetUE6?scode=ANAAyQcbAAgB8qKjm9AWkASAb9APA @ https://fe-static.xhscdn.com/formula-static/ugc/public/resource/js/4325.c9d005ff.js:118
+[    3633ms] [LOG] Error @ :2
+[    3900ms] [LOG] Error @ :2
+[    3937ms] [LOG] Error @ :2
+[    4086ms] [LOG] Error @ :2
+[    5373ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://creator.xiaohongshu.com/login?source=&redirectReason=401&lastUrl=%252Fpublish%252Fpublish:0
+[    6853ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    6854ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    6855ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    6855ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    6855ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    6856ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    6856ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    6857ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[    8914ms] [LOG] Error @ :2
+[   17059ms] [LOG] Error @ :2
+[   70527ms] [INFO] 框架和 SDK 输出的日志默认不展示，可在框架配置文件中设置开启，详见 https://doc.weixin.qq.com/doc/w3_AWkASAb9APAr8IdJI5VS0OyqetUE6?scode=ANAAyQcbAAgB8qKjm9AWkASAb9APA @ https://fe-static.xhscdn.com/formula-static/ugc/public/resource/js/4325.c9d005ff.js:118
+[   70660ms] [LOG] Error @ :2
+[   70888ms] [LOG] Error @ :2
+[   71043ms] [LOG] Error @ :2
+[   72177ms] [LOG] Error @ :2
+[   72489ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://creator.xiaohongshu.com/login?source=&redirectReason=401&lastUrl=%252Fpublish%252Fpublish:0
+[   73769ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[   73786ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[   73786ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[   73787ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[   73787ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[   73787ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[   73788ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[   73788ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[   75884ms] [LOG] Error @ :2
+[  207633ms] [LOG] Error @ :2
+[  210895ms] [LOG] Error @ :2
+[  212038ms] [LOG] Error @ :2
+[  213127ms] [LOG] Error @ :2
+[  215281ms] [LOG] Error @ :2
+[  217485ms] [LOG] Error @ :2
+[  218577ms] [LOG] Error @ :2
+[  219675ms] [LOG] Error @ :2
+[  220766ms] [LOG] Error @ :2
+[  223693ms] [LOG] Error @ :2
+[  224989ms] [LOG] Error @ :2
+[  226082ms] [LOG] Error @ :2
+[  229485ms] [LOG] Error @ :2
+[  230590ms] [LOG] Error @ :2
+[  231708ms] [LOG] Error @ :2
+[  232816ms] [LOG] Error @ :2
+[  233913ms] [LOG] Error @ :2
+[  237204ms] [LOG] Error @ :2
+[  241636ms] [LOG] Error @ :2
+[  242739ms] [LOG] Error @ :2
+[  243818ms] [LOG] Error @ :2
+[  245020ms] [LOG] Error @ :2
+[  246180ms] [LOG] Error @ :2
+[  247320ms] [LOG] Error @ :2
+[  248449ms] [LOG] Error @ :2
+[  252840ms] [LOG] Error @ :2
+[  253959ms] [LOG] Error @ :2
+[  255032ms] [LOG] Error @ :2
+[  257209ms] [LOG] Error @ :2
+[  260562ms] [LOG] Error @ :2
+[  262745ms] [LOG] Error @ :2
+[  266598ms] [LOG] Error @ :2
+[  267779ms] [LOG] Error @ :2
+[  268890ms] [LOG] Error @ :2
+[  269982ms] [LOG] Error @ :2
+[  271093ms] [LOG] Error @ :2
+[  275035ms] [LOG] Error @ :2
+[  275725ms] [INFO] 框架和 SDK 输出的日志默认不展示，可在框架配置文件中设置开启，详见 https://doc.weixin.qq.com/doc/w3_AWkASAb9APAr8IdJI5VS0OyqetUE6?scode=ANAAyQcbAAgB8qKjm9AWkASAb9APA @ https://fe-static.xhscdn.com/formula-static/ugc/public/resource/js/4325.c9d005ff.js:118
+[  275831ms] [LOG] Error @ :2
+[  276114ms] [LOG] Error @ :2
+[  278199ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[  278207ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[  278208ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[  278209ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[  278209ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[  278209ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[  278210ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[  278210ms] [ERROR] Failed to load resource: net::ERR_BLOCKED_BY_CLIENT @ chrome-extension://invalid/:0
+[  279064ms] [LOG] Error @ :2
+[  285482ms] [TIMEEND] 实时竞速: 6821.43798828125 ms @ https://fe-static.xhscdn.com/formula-static/ugc/public/resource/js/index.8e3ea249.js:0
+[  332421ms] [LOG] Error @ :2
+[  606445ms] [LOG] Error @ :2
+[  812477ms] [LOG] Error @ :2
+[  813325ms] [LOG] Error @ :2
+[  813632ms] [ERROR] GeolocationPositionError @ https://fe-static.xhscdn.com/formula-static/ugc/public/resource/js/project-publish-vue.20cf2cba.js:0
+[  814222ms] [LOG] Error @ :2
+[  996361ms] [LOG] Error @ :2
+[  996391ms] [LOG] Error @ :2
+[ 1506957ms] [LOG] Error @ :2
+[ 1596459ms] [LOG] Error @ :2
+[ 1807084ms] [LOG] Error @ :2
