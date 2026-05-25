@@ -33,10 +33,10 @@ from layer9_integration import layer9_cognitive
 # 导入Stage 6模块（V187.0）- Layer 2 两仪十二自 × 九爻引擎融合
 from layer2_integration import layer2_nineyao
 
-# 导入Stage 7模块（V188.0）- Layer 1 一体脉冲呼吸 × 四相恒转融合
+# 导入Stage 8模块（V190.0）- 系统整合完成
 from layer1_integration import layer1_fourphase
 
-app = FastAPI(title="灵助 V188.0 - 多Agent统一管理系统 + Layer 1四相恒转融合")
+app = FastAPI(title="灵助 V190.0 - 多Agent统一管理系统 + 系统整合完成")
 
 # ==================== 多Agent配置 ====================
 AGENTS_CONFIG = {
