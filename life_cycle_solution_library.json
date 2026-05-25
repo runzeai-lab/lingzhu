@@ -1,0 +1,378 @@
+{
+  "solutions_cache": {
+    "婴幼儿期": {
+      "stage_name": "婴幼儿期",
+      "body_solutions": [
+        {
+          "name": "母乳喂养指导",
+          "description": "提供科学母乳喂养指导，确保婴儿营养",
+          "priority": "高"
+        },
+        {
+          "name": "睡眠规律建立",
+          "description": "帮助建立规律睡眠习惯，促进大脑发育",
+          "priority": "高"
+        },
+        {
+          "name": "感官刺激活动",
+          "description": "提供适合年龄的感官刺激活动，促进感知觉发展",
+          "priority": "中"
+        }
+      ],
+      "mind_solutions": [
+        {
+          "name": "安全依恋建立",
+          "description": "帮助父母与婴儿建立安全依恋关系",
+          "priority": "高"
+        },
+        {
+          "name": "情绪安抚技巧",
+          "description": "提供婴儿情绪安抚技巧，减少分离焦虑",
+          "priority": "中"
+        }
+      ],
+      "spirit_solutions": [
+        {
+          "name": "生命神圣感培养",
+          "description": "帮助父母培养对生命神圣感的认知",
+          "priority": "低"
+        }
+      ]
+    },
+    "童年期": {
+      "stage_name": "童年期",
+      "body_solutions": [
+        {
+          "name": "营养均衡饮食",
+          "description": "提供儿童营养均衡饮食指导",
+          "priority": "高"
+        },
+        {
+          "name": "户外运动活动",
+          "description": "鼓励儿童参与户外运动和活动",
+          "priority": "高"
+        },
+        {
+          "name": "视力保护方案",
+          "description": "提供视力保护方案，预防近视",
+          "priority": "中"
+        }
+      ],
+      "mind_solutions": [
+        {
+          "name": "学习兴趣培养",
+          "description": "帮助培养儿童学习兴趣和好奇心",
+          "priority": "高"
+        },
+        {
+          "name": "社交技能训练",
+          "description": "提供社交技能训练，帮助建立同伴关系",
+          "priority": "高"
+        },
+        {
+          "name": "情绪管理教育",
+          "description": "提供适合儿童情绪管理教育",
+          "priority": "中"
+        }
+      ],
+      "spirit_solutions": [
+        {
+          "name": "价值观启蒙",
+          "description": "提供适合儿童价值观启蒙教育",
+          "priority": "中"
+        },
+        {
+          "name": "好奇心保护",
+          "description": "保护儿童好奇心，鼓励探索精神",
+          "priority": "高"
+        }
+      ]
+    },
+    "青少年期": {
+      "stage_name": "青少年期",
+      "body_solutions": [
+        {
+          "name": "青春期健康教育",
+          "description": "提供青春期健康教育和指导",
+          "priority": "高"
+        },
+        {
+          "name": "运动习惯培养",
+          "description": "帮助培养终身运动习惯",
+          "priority": "高"
+        },
+        {
+          "name": "睡眠优化方案",
+          "description": "提供青少年睡眠优化方案",
+          "priority": "中"
+        }
+      ],
+      "mind_solutions": [
+        {
+          "name": "自我认同引导",
+          "description": "提供自我认同探索和引导",
+          "priority": "高"
+        },
+        {
+          "name": "情绪管理训练",
+          "description": "提供青少年情绪管理训练和技巧",
+          "priority": "高"
+        },
+        {
+          "name": "价值观澄清",
+          "description": "帮助澄清个人价值观和人生方向",
+          "priority": "高"
+        },
+        {
+          "name": "同伴关系指导",
+          "description": "提供健康同伴关系建立指导",
+          "priority": "中"
+        }
+      ],
+      "spirit_solutions": [
+        {
+          "name": "生命意义探索",
+          "description": "引导探索生命意义和人生目的",
+          "priority": "高"
+        },
+        {
+          "name": "创造力培养",
+          "description": "提供创造力培养和潜能开发方案",
+          "priority": "高"
+        }
+      ]
+    },
+    "青年期": {
+      "stage_name": "青年期",
+      "body_solutions": [
+        {
+          "name": "职业健康保护",
+          "description": "提供职业健康保护和预防方案",
+          "priority": "高"
+        },
+        {
+          "name": "营养与运动计划",
+          "description": "制定适合青年的营养与运动计划",
+          "priority": "高"
+        },
+        {
+          "name": "睡眠质量管理",
+          "description": "提供睡眠质量管理方案",
+          "priority": "中"
+        }
+      ],
+      "mind_solutions": [
+        {
+          "name": "职业规划指导",
+          "description": "提供职业规划和发展指导",
+          "priority": "高"
+        },
+        {
+          "name": "亲密关系建立",
+          "description": "提供健康亲密关系建立和维护指导",
+          "priority": "高"
+        },
+        {
+          "name": "经济独立计划",
+          "description": "帮助制定经济独立和财务管理计划",
+          "priority": "高"
+        },
+        {
+          "name": "压力管理技巧",
+          "description": "提供青年期压力管理技巧",
+          "priority": "中"
+        }
+      ],
+      "spirit_solutions": [
+        {
+          "name": "人生目的探索",
+          "description": "引导探索人生目的和核心价值",
+          "priority": "高"
+        },
+        {
+          "name": "贡献社会方式",
+          "description": "探索个人贡献社会的方式和路径",
+          "priority": "中"
+        }
+      ]
+    },
+    "中年期": {
+      "stage_name": "中年期",
+      "body_solutions": [
+        {
+          "name": "中年健康管理",
+          "description": "提供中年健康管理和疾病预防方案",
+          "priority": "高"
+        },
+        {
+          "name": "工作压力缓解",
+          "description": "提供工作压力缓解和管理方案",
+          "priority": "高"
+        },
+        {
+          "name": "营养优化计划",
+          "description": "制定适合中年的营养优化计划",
+          "priority": "中"
+        }
+      ],
+      "mind_solutions": [
+        {
+          "name": "工作家庭平衡",
+          "description": "提供工作家庭平衡策略和指导",
+          "priority": "高"
+        },
+        {
+          "name": "中年危机应对",
+          "description": "提供中年危机识别和应对方案",
+          "priority": "高"
+        },
+        {
+          "name": "人生意义重审",
+          "description": "引导重审人生意义和核心价值",
+          "priority": "高"
+        },
+        {
+          "name": "关系维护技巧",
+          "description": "提供各种关系维护和深化技巧",
+          "priority": "中"
+        }
+      ],
+      "spirit_solutions": [
+        {
+          "name": "智慧传承计划",
+          "description": "制定智慧传承和知识分享计划",
+          "priority": "高"
+        },
+        {
+          "name": "生命整合探索",
+          "description": "引导进行生命整合和内在和谐探索",
+          "priority": "高"
+        }
+      ]
+    },
+    "老年期": {
+      "stage_name": "老年期",
+      "body_solutions": [
+        {
+          "name": "老年健康管理",
+          "description": "提供老年健康管理和疾病预防方案",
+          "priority": "高"
+        },
+        {
+          "name": "认知功能维护",
+          "description": "提供认知功能维护和训练方案",
+          "priority": "高"
+        },
+        {
+          "name": "运动安全指导",
+          "description": "提供适合老年的运动安全指导",
+          "priority": "中"
+        }
+      ],
+      "mind_solutions": [
+        {
+          "name": "退休生活规划",
+          "description": "提供退休生活规划和适应指导",
+          "priority": "高"
+        },
+        {
+          "name": "社会连接维护",
+          "description": "提供社会连接维护和深化方案",
+          "priority": "高"
+        },
+        {
+          "name": "生命回顾引导",
+          "description": "引导进行生命回顾和整合",
+          "priority": "高"
+        },
+        {
+          "name": "孤独感应对",
+          "description": "提供孤独感应对和缓解方案",
+          "priority": "中"
+        }
+      ],
+      "spirit_solutions": [
+        {
+          "name": "生命意义整合",
+          "description": "引导进行生命意义整合和超越",
+          "priority": "高"
+        },
+        {
+          "name": "遗产传承计划",
+          "description": "制定遗产传承和价值观传递计划",
+          "priority": "高"
+        }
+      ]
+    },
+    "高龄期": {
+      "stage_name": "高龄期",
+      "body_solutions": [
+        {
+          "name": "照护支持方案",
+          "description": "提供全面照护支持和资源链接",
+          "priority": "高"
+        },
+        {
+          "name": "尊严维护指导",
+          "description": "提供尊严维护和尊重指导",
+          "priority": "高"
+        },
+        {
+          "name": "舒适护理方案",
+          "description": "提供舒适护理和疼痛管理方案",
+          "priority": "高"
+        }
+      ],
+      "mind_solutions": [
+        {
+          "name": "生命终结准备",
+          "description": "提供生命终结准备和心灵安抚",
+          "priority": "高"
+        },
+        {
+          "name": "丧失应对支持",
+          "description": "提供丧失应对和哀伤支持",
+          "priority": "高"
+        },
+        {
+          "name": "回忆整合引导",
+          "description": "引导进行回忆整合和生命意义确认",
+          "priority": "中"
+        }
+      ],
+      "spirit_solutions": [
+        {
+          "name": "生死平和探索",
+          "description": "引导探索生死平和和精神超越",
+          "priority": "高"
+        },
+        {
+          "name": "生命智慧传递",
+          "description": "提供生命智慧传递和遗产传承方案",
+          "priority": "高"
+        }
+      ]
+    }
+  },
+  "usage_history": [
+    {
+      "timestamp": "2026-05-25T00:19:40.886834",
+      "stage_name": "青年期",
+      "solution_name": "职业健康保护",
+      "user_feedback": "非常实用"
+    },
+    {
+      "timestamp": "2026-05-25T00:19:40.887011",
+      "stage_name": "青年期",
+      "solution_name": "职业规划指导",
+      "user_feedback": "很有帮助"
+    },
+    {
+      "timestamp": "2026-05-25T00:19:40.887017",
+      "stage_name": "中年期",
+      "solution_name": "中年健康管理",
+      "user_feedback": "适合当前需求"
+    }
+  ],
+  "timestamp": "2026-05-25T00:19:40.887095"
+}

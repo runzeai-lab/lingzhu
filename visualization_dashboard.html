@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>灵助可视化仪表板 V1.0</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #718096;
+            font-size: 1.1em;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .card h2 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+        
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .status-label {
+            color: #718096;
+            font-weight: 500;
+        }
+        
+        .status-value {
+            color: #2d3748;
+            font-weight: 600;
+        }
+        
+        .history-item {
+            padding: 12px;
+            margin-bottom: 10px;
+            background: #f7fafc;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .history-time {
+            color: #718096;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+        
+        .history-content {
+            color: #2d3748;
+            font-size: 0.95em;
+        }
+        
+        .success {
+            color: #38a169;
+        }
+        
+        .error {
+            color: #e53e3e;
+        }
+        
+        .loading {
+            text-align: center;
+            color: #718096;
+            padding: 20px;
+        }
+        
+        .refresh-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .refresh-btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌀 灵助可视化仪表板 V1.0</h1>
+            <p>实时显示调度状态、决策过程、系统健康</p>
+        </div>
+        
+        <div class="dashboard">
+            <!-- 系统状态卡片 -->
+            <div class="card">
+                <h2>📊 系统状态</h2>
+                <div id="system-state">
+                    <div class="loading">加载中...</div>
+                </div>
+            </div>
+            
+            <!-- 执行历史卡片 -->
+            <div class="card">
+                <h2>📜 执行历史</h2>
+                <div id="execution-history">
+                    <div class="loading">加载中...</div>
+                </div>
+            </div>
+            
+            <!-- 决策历史图表 -->
+            <div class="card">
+                <h2>📈 决策历史趋势</h2>
+                <div class="chart-container">
+                    <canvas id="decision-chart"></canvas>
+                </div>
+            </div>
+            
+            <!-- 系统健康卡片 -->
+            <div class="card">
+                <h2>🏥 系统健康</h2>
+                <div id="system-health">
+                    <div class="loading">加载中...</div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="refresh-btn" onclick="loadDashboardData()">🔄 刷新数据</button>
+    </div>
+    
+    <script>
+        // 全局变量
+        let decisionChart = null;
+        
+        // 加载仪表板数据
+        async function loadDashboardData() {
+            try {
+                // 1. 加载系统状态
+                await loadSystemState();
+                
+                // 2. 加载执行历史
+                await loadExecutionHistory();
+                
+                // 3. 加载决策历史
+                await loadDecisionHistory();
+                
+                // 4. 更新系统健康
+                updateSystemHealth();
+                
+            } catch (error) {
+                console.error('加载仪表板数据失败:', error);
+            }
+        }
+        
+        // 加载系统状态
+        async function loadSystemState() {
+            try {
+                const response = await fetch('http://localhost:9000/api/system-state');
+                const result = await response.json();
+                
+                if (result.success) {
+                    const state = result.data;
+                    const systemState = state.system_state || {};
+                    const environment = state.environment || {};
+                    
+                    let html = '';
+                    
+                    // 系统状态
+                    html += '<div class="status-item">';
+                    html += '<span class="status-label">CPU使用率</span>';
+                    html += '<span class="status-value">' + (systemState.cpu_usage * 100).toFixed(1) + '%</span>';
+                    html += '</div>';
+                    
+                    html += '<div class="status-item">';
+                    html += '<span class="status-label">内存使用率</span>';
+                    html += '<span class="status-value">' + (systemState.memory_usage * 100).toFixed(1) + '%</span>';
+                    html += '</div>';
+                    
+                    html += '<div class="status-item">';
+                    html += '<span class="status-label">任务队列</span>';
+                    html += '<span class="status-value">' + systemState.task_queue + '</span>';
+                    html += '</div>';
+                    
+                    html += '<div class="status-item">';
+                    html += '<span class="status-label">可用Agent</span>';
+                    html += '<span class="status-value">' + (systemState.available_agents || []).join(', ') + '</span>';
+                    html += '</div>';
+                    
+                    html += '<div class="status-item">';
+                    html += '<span class="status-label">当前模型</span>';
+                    html += '<span class="status-value">' + (systemState.current_model || '未知') + '</span>';
+                    html += '</div>';
+                    
+                    // 环境信息
+                    html += '<div class="status-item">';
+                    html += '<span class="status-label">位置</span>';
+                    html += '<span class="status-value">' + (environment.location || '未知') + '</span>';
+                    html += '</div>';
+                    
+                    html += '<div class="status-item">';
+                    html += '<span class="status-label">网络</span>';
+                    html += '<span class="status-value">' + (environment.network === 'connected' ? '✅ 已连接' : '❌ 未连接') + '</span>';
+                    html += '</div>';
+                    
+                    html += '<div class="status-item">';
+                    html += '<span class="status-label">用户</span>';
+                    html += '<span class="status-value">' + (environment.user || '未知') + '</span>';
+                    html += '</div>';
+                    
+                    document.getElementById('system-state').innerHTML = html;
+                }
+            } catch (error) {
+                document.getElementById('system-state').innerHTML = '<div class="loading">加载失败: ' + error.message + '</div>';
+            }
+        }
+        
+        // 加载执行历史
+        async function loadExecutionHistory() {
+            try {
+                const response = await fetch('http://localhost:9000/api/execution-history?limit=5');
+                const result = await response.json();
+                
+                if (result.success) {
+                    const history = result.data || [];
+                    let html = '';
+                    
+                    if (history.length === 0) {
+                        html = '<div class="loading">暂无执行历史</div>';
+                    } else {
+                        history.forEach(item => {
+                            const success = item.result && item.result.success;
+                            html += '<div class="history-item">';
+                            html += '<div class="history-time">' + new Date(item.timestamp).toLocaleString() + '</div>';
+                            html += '<div class="history-content ' + (success ? 'success' : 'error') + '">';
+                            html += (success ? '✅' : '❌') + ' ' + item.user_input.substring(0, 50) + (item.user_input.length > 50 ? '...' : '');
+                            html += '</div>';
+                            html += '</div>';
+                        });
+                    }
+                    
+                    document.getElementById('execution-history').innerHTML = html;
+                }
+            } catch (error) {
+                document.getElementById('execution-history').innerHTML = '<div class="loading">加载失败: ' + error.message + '</div>';
+            }
+        }
+        
+        // 加载决策历史
+        async function loadDecisionHistory() {
+            try {
+                const response = await fetch('http://localhost:9000/api/decision-history');
+                const result = await response.json();
+                
+                if (result.success) {
+                    const history = result.data || [];
+                    
+                    // 准备图表数据
+                    const labels = [];
+                    const confidenceData = [];
+                    const riskData = [];
+                    
+                    // 只取最近10条记录
+                    const recentHistory = history.slice(-10);
+                    
+                    recentHistory.forEach(item => {
+                        const date = new Date(item.input.timestamp);
+                        labels.push(date.toLocaleTimeString());
+                        
+                        if (item.output && item.output.confidence) {
+                            confidenceData.push(item.output.confidence);
+                        } else {
+                            confidenceData.push(0);
+                        }
+                        
+                        if (item.output && item.output.risk) {
+                            const riskMap = {'低': 1, '中': 2, '高': 3};
+                            riskData.push(riskMap[item.output.risk] || 0);
+                        } else {
+                            riskData.push(0);
+                        }
+                    });
+                    
+                    // 创建或更新图表
+                    const ctx = document.getElementById('decision-chart').getContext('2d');
+                    
+                    if (decisionChart) {
+                        decisionChart.destroy();
+                    }
+                    
+                    decisionChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [
+                                {
+                                    label: '置信度',
+                                    data: confidenceData,
+                                    borderColor: 'rgb(102, 126, 234)',
+                                    backgroundColor: 'rgba(102, 126, 234, 0.2)',
+                                    tension: 0.4
+                                },
+                                {
+                                    label: '风险等级',
+                                    data: riskData,
+                                    borderColor: 'rgb(229, 62, 62)',
+                                    backgroundColor: 'rgba(229, 62, 62, 0.2)',
+                                    tension: 0.4
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    max: 3
+                                }
+                            }
+                        }
+                    });
+                }
+            } catch (error) {
+                console.error('加载决策历史失败:', error);
+            }
+        }
+        
+        // 更新系统健康
+        function updateSystemHealth() {
+            const now = new Date();
+            const uptime = '未知'; // 简化：实际应该从系统获取
+            
+            let html = '';
+            html += '<div class="status-item">';
+            html += '<span class="status-label">状态</span>';
+            html += '<span class="status-value success">✅ 健康</span>';
+            html += '</div>';
+            
+            html += '<div class="status-item">';
+            html += '<span class="status-label">运行时间</span>';
+            html += '<span class="status-value">' + uptime + '</span>';
+            html += '</div>';
+            
+            html += '<div class="status-item">';
+            html += '<span class="status-label">最后更新</span>';
+            html += '<span class="status-value">' + now.toLocaleTimeString() + '</span>';
+            html += '</div>';
+            
+            document.getElementById('system-health').innerHTML = html;
+        }
+        
+        // 页面加载时自动加载数据
+        window.onload = function() {
+            loadDashboardData();
+            
+            // 每30秒自动刷新
+            setInterval(loadDashboardData, 30000);
+        };
+    </script>
+</body>
+</html>
