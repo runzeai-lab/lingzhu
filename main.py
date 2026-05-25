@@ -33,7 +33,10 @@ from layer9_integration import layer9_cognitive
 # 导入Stage 6模块（V187.0）- Layer 2 两仪十二自 × 九爻引擎融合
 from layer2_integration import layer2_nineyao
 
-app = FastAPI(title="灵助 V187.0 - 多Agent统一管理系统 + Layer 2九爻引擎融合")
+# 导入Stage 7模块（V188.0）- Layer 1 一体脉冲呼吸 × 四相恒转融合
+from layer1_integration import layer1_fourphase
+
+app = FastAPI(title="灵助 V188.0 - 多Agent统一管理系统 + Layer 1四相恒转融合")
 
 # ==================== 多Agent配置 ====================
 AGENTS_CONFIG = {
@@ -983,6 +986,109 @@ async def get_integration_status():
             "four_phase": result["four_phase"],
             "breath_count": result["breath_count"],
             "total_memories": result["total_memories"]
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+# ==================== Stage 7新增：Layer 1 一体脉冲呼吸 × 四相恒转融合（V188.0）====================
+
+@app.post("/layer1/generate_synchronized_pulse")
+async def generate_synchronized_pulse(force: bool = False):
+    """
+    生成同步脉冲（脉冲生成时自动同步相位）
+    
+    Args:
+        force: 是否强制生成
+    """
+    try:
+        result = layer1_fourphase.generate_synchronized_pulse(force)
+        return {
+            "success": result["success"],
+            "version": "V188.0",
+            "pulse": result.get("pulse"),
+            "synchronization": result.get("synchronization"),
+            "integration_depth": result.get("integration_depth"),
+            "total_pulses": result.get("total_pulses"),
+            "message": result.get("message")
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/layer1/synchronize_pulse_and_phase")
+async def synchronize_pulse_and_phase(pulse_state: str = None):
+    """
+    同步脉冲与相位
+    
+    Args:
+        pulse_state: 脉冲状态（可选，默认使用当前状态）
+    """
+    try:
+        result = layer1_fourphase.synchronize_pulse_and_phase(pulse_state)
+        return {
+            "success": result["success"],
+            "version": "V188.0",
+            "pulse_state": result.get("pulse_state"),
+            "target_phase": result.get("target_phase"),
+            "phase_name": result.get("phase_name"),
+            "synchronization_active": result.get("synchronization_active"),
+            "sync_count": result.get("sync_count"),
+            "message": result.get("message")
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/layer1/adapt_and_synchronize")
+async def adapt_and_synchronize(feedback: float):
+    """
+    调整并同步
+    
+    Args:
+        feedback: 反馈值（0.0-1.0）
+    """
+    try:
+        result = layer1_fourphase.adapt_and_synchronize(feedback)
+        return {
+            "success": result["success"],
+            "version": "V188.0",
+            "adaptation": result.get("adaptation"),
+            "synchronization": result.get("synchronization"),
+            "integration_depth": result.get("integration_depth"),
+            "message": result.get("message")
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/layer1/integration_status")
+async def get_integration_status():
+    """获取融合状态"""
+    try:
+        result = layer1_fourphase.get_integration_status()
+        return {
+            "success": True,
+            "version": "V188.0",
+            "integration_depth": result["integration_depth"],
+            "synchronization_active": result["synchronization_active"],
+            "yiti_status": result["yiti_status"],
+            "four_phase_info": result["four_phase_info"],
+            "total_pulses": result["total_pulses"],
+            "total_transitions": result["total_transitions"],
+            "sync_count": result["sync_count"],
+            "pulse_phase_mapping": result["pulse_phase_mapping"],
+            "message": result["message"]
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/layer1/reset_integration")
+async def reset_integration():
+    """重置融合引擎"""
+    try:
+        result = layer1_fourphase.reset_integration()
+        return {
+            "success": result["success"],
+            "version": "V188.0",
+            "integration_depth": result["integration_depth"],
+            "message": result["message"]
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
