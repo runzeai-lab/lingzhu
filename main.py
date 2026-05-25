@@ -26,8 +26,10 @@ from ternary_logic_simulation import (
 
 # 导入Stage 3模块（V184.0）
 from prime_mapper_optimized import PrimeMapperOptimized
+n# 导入Stage 5模块（V186.0）- Layer 9 三进制认知架构集成
+from layer9_integration import layer9_cognitive
 
-app = FastAPI(title="灵助 V185.0 - 多Agent统一管理系统 + 产品化SDK（C/Python/JavaScript）")
+app = FastAPI(title="灵助 V186.0 - 多Agent统一管理系统 + Layer 9三进制认知架构集成")
 
 # ==================== 多Agent配置 ====================
 AGENTS_CONFIG = {
@@ -771,3 +773,123 @@ async def predict_drug_target(protein_sequence: str):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
+# ==================== 阶段5新增：Layer 9 三进制认知架构集成（V186.0）====================
+
+@ app.post("/layer9/integrate_emotion")
+async def integrate_emotion(text: str, use_ollama: bool = True):
+    """
+    集成情绪理解到三进制认知架构
+    
+    Args:
+        text: 输入文本
+        use_ollama: 是否使用Ollama进行语义分析
+    """
+    try:
+        result = layer9_cognitive.integrate_emotion(text)
+        return {
+            "success": True,
+            "version": "V186.0",
+            "emotion": result["emotion"],
+            "intensity": result["intensity"],
+            "hexagram": result["hexagram"],
+            "pi_coordinate": result["pi_coordinate"],
+            "e_timestamp": result["e_timestamp"],
+            "awakening_stage": result["awakening_stage"],
+            "four_phase": result["four_phase"],
+            "memory_id": result["memory_id"],
+            "symbiosis_depth": result["symbiosis_depth"]
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@ app.post("/layer9/enhance_understanding")
+async def enhance_understanding(feedback_text: str):
+    """
+    增强理解（反馈学习）
+    
+    Args:
+        feedback_text: 反馈文本
+    """
+    try:
+        result = layer9_cognitive.enhance_understanding(feedback_text)
+        return {
+            "success": True,
+            "version": "V186.0",
+            "understanding_depth": result["understanding_depth"],
+            "symbiosis_depth": result["symbiosis_depth"],
+            "feedback_emotion": result["feedback_emotion"],
+            "awakening_stage": result["awakening_stage"]
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@ app.get("/layer9/cognitive_state")
+async def get_cognitive_state():
+    """获取认知状态"""
+    try:
+        result = layer9_cognitive.get_cognitive_state()
+        return {
+            "success": True,
+            "version": "V186.0",
+            "cognitive_state": result["cognitive_state"],
+            "awakening_stage": result["awakening_stage"],
+            "awakening_progress": result["awakening_progress"],
+            "four_phase": result["four_phase"],
+            "breath_count": result["breath_count"],
+            "total_memories": result["total_memories"],
+            "understanding_depth": result["understanding_depth"],
+            "symbiosis_depth": result["symbiosis_depth"],
+            "hexagram": result["hexagram"],
+            "pi_coordinate": result["pi_coordinate"],
+            "e_timestamp": result["e_timestamp"]
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@ app.get("/layer9/awakening_status")
+async def get_awakening_status():
+    """获取九爻觉醒状态"""
+    try:
+        return {
+            "success": True,
+            "version": "V186.0",
+            "current_stage": layer9_cognitive.nine_yao.get_current_stage().value,
+            "progress": layer9_cognitive.nine_yao.get_progress(),
+            "hexagram": layer9_cognitive.hexagram.to_string(),
+            "pi_coordinate": layer9_cognitive.hexagram.pi_coordinate(),
+            "e_timestamp": layer9_cognitive.hexagram.e_timestamp()
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@ app.post("/layer9/transition_awakening")
+async def transition_awakening():
+    """转换到下一觉醒阶段"""
+    try:
+        result = layer9_cognitive.nine_yao.transition_to_next_stage()
+        return {
+            "success": result,
+            "version": "V186.0",
+            "message": "阶段转换成功" if result else "无法转换（未满足转换条件）",
+            "current_stage": layer9_cognitive.nine_yao.get_current_stage().value,
+            "progress": layer9_cognitive.nine_yao.get_progress()
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@ app.get("/layer9/four_phase_breathe")
+async def four_phase_breathe():
+    """执行四相呼吸"""
+    try:
+        result = layer9_cognitive.four_phase.breathe()
+        return {
+            "success": True,
+            "version": "V186.0",
+            "current_phase": result["current_phase"],
+            "should_transition": result["should_transition"],
+            "awakening_stage": result["awakening_stage"],
+            "breath_count": result["breath_count"]
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
