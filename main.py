@@ -27,7 +27,7 @@ from ternary_logic_simulation import (
 # 导入Stage 3模块（V184.0）
 from prime_mapper_optimized import PrimeMapperOptimized
 
-app = FastAPI(title="灵助 V184.0 - 多Agent统一管理系统 + 算力优化（素数映射 + π记忆）")
+app = FastAPI(title="灵助 V185.0 - 多Agent统一管理系统 + 产品化SDK（C/Python/JavaScript）")
 
 # ==================== 多Agent配置 ====================
 AGENTS_CONFIG = {

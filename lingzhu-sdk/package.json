@@ -1,0 +1,53 @@
+{
+  "name": "lingzhu-sdk",
+  "version": "185.0.0",
+  "description": "灵助 SDK - 缓存感知调度器、边缘推理适配器、三进制逻辑仿真",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js",
+    "build": "echo 'No build step required for JavaScript SDK'",
+    "lint": "eslint index.js",
+    "prepublishOnly": "npm run lint && npm test"
+  },
+  "keywords": [
+    "lingzhu",
+    "sdk",
+    "cache",
+    "edge-inference",
+    "ternary-logic",
+    "hexagram",
+    "cognitive-architecture"
+  ],
+  "author": {
+    "name": "灵助 Lingzhu",
+    "email": "lingzhu@wuweixin.com",
+    "url": "https://github.com/lingzhu/lingzhu"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lingzhu/lingzhu-sdk-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lingzhu/lingzhu-sdk-js/issues"
+  },
+  "homepage": "https://github.com/lingzhu/lingzhu-sdk-js#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "jest": "^29.0.0"
+  },
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE",
+    ".npmignore"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
