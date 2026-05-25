@@ -26,10 +26,14 @@ from ternary_logic_simulation import (
 
 # 导入Stage 3模块（V184.0）
 from prime_mapper_optimized import PrimeMapperOptimized
-n# 导入Stage 5模块（V186.0）- Layer 9 三进制认知架构集成
+
+# 导入Stage 5模块（V186.0）- Layer 9 三进制认知架构集成
 from layer9_integration import layer9_cognitive
 
-app = FastAPI(title="灵助 V186.0 - 多Agent统一管理系统 + Layer 9三进制认知架构集成")
+# 导入Stage 6模块（V187.0）- Layer 2 两仪十二自 × 九爻引擎融合
+from layer2_integration import layer2_nineyao
+
+app = FastAPI(title="灵助 V187.0 - 多Agent统一管理系统 + Layer 2九爻引擎融合")
 
 # ==================== 多Agent配置 ====================
 AGENTS_CONFIG = {
@@ -890,6 +894,95 @@ async def four_phase_breathe():
             "should_transition": result["should_transition"],
             "awakening_stage": result["awakening_stage"],
             "breath_count": result["breath_count"]
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+# ==================== 阶段6新增：Layer 2 两仪十二自 × 九爻引擎融合（V187.0）====================
+
+@app.post("/layer2/integrate_healing_and_awakening")
+async def integrate_healing_and_awakening(error_type: str, error_msg: str):
+    """
+    融合自愈与觉醒
+    
+    Args:
+        error_type: 错误类型
+        error_msg: 错误信息
+    """
+    try:
+        result = layer2_nineyao.integrate_healing_and_awakening(error_type, error_msg)
+        return {
+            "success": True,
+            "version": "V187.0",
+            "healing": result["healing"],
+            "awakening_stage": result["awakening_stage"],
+            "awakening_progress": result["awakening_progress"],
+            "four_phase": result["four_phase"],
+            "should_transition": result["should_transition"],
+            "memory_id": result["memory_id"],
+            "integration_depth": result["integration_depth"]
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/layer2/integrate_understanding_and_reflection")
+async def integrate_understanding_and_reflection(content: str, feedback: Optional[str] = None):
+    """
+    融合理解与反思
+    
+    Args:
+        content: 内容
+        feedback: 反馈（可选）
+    """
+    try:
+        result = layer2_nineyao.integrate_understanding_and_reflection(content, feedback)
+        return {
+            "success": True,
+            "version": "V187.0",
+            "understanding": result["understanding"],
+            "understanding_depth": result["understanding_depth"],
+            "awakening_stage": result["awakening_stage"],
+            "awakening_progress": result["awakening_progress"],
+            "four_phase": result["four_phase"],
+            "should_transition": result["should_transition"],
+            "memory_id": result["memory_id"],
+            "integration_depth": result["integration_depth"]
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/layer2/activate_symbiosis")
+async def activate_symbiosis():
+    """激活共生"""
+    try:
+        result = layer2_nineyao.activate_symbiosis()
+        return {
+            "success": True,
+            "version": "V187.0",
+            "symbiosis_activated": result,
+            "integration_depth": layer2_nineyao.integration_depth,
+            "awakening_progress": layer2_nineyao.nine_yao.get_progress()
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/layer2/integration_status")
+async def get_integration_status():
+    """获取融合状态"""
+    try:
+        result = layer2_nineyao.get_integration_status()
+        return {
+            "success": True,
+            "version": "V187.0",
+            "integration_depth": result["integration_depth"],
+            "symbiosis_active": result["symbiosis_active"],
+            "healing_success_rate": result["healing_success_rate"],
+            "understanding_depth": result["understanding_depth"],
+            "awakening_stage": result["awakening_stage"],
+            "awakening_progress": result["awakening_progress"],
+            "four_phase": result["four_phase"],
+            "breath_count": result["breath_count"],
+            "total_memories": result["total_memories"]
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
