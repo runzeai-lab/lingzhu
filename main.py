@@ -40,7 +40,7 @@ app = FastAPI(title="灵助 V190.0 - 多Agent统一管理系统 + 系统整合�
 
 # ==================== 多Agent配置 ====================
 AGENTS_CONFIG = {
-    "lingzhu": {"port": 8000, "version": "V180", "url": "http://localhost:8000"},
+    "lingzhu": {"port": 8000, "version": "V190.0", "url": "http://localhost:8000"},
     "daonovice": {"port": 8088, "version": "V2.0", "url": "http://localhost:8088"},
     "hermes_agent": {"port": 8888, "version": "V3.0", "url": "http://localhost:8888"},
     "hermes": {"port": 5000, "version": "V2.0", "url": "http://localhost:5000"},
