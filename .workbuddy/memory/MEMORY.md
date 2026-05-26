@@ -31,3 +31,31 @@
 - **已修复**: `scripts/auto_backup_github.sh` 第 18-19 行已加固
 - **注意**: ping 通但 HTTPS 不通，是 WSL 网络栈 TLS 问题，非网络故障
 
+## GitHub 备份经验教训（2026-05-25）
+### 常见问题与解决方案
+1. **WSL 挂载失败**：`/mnt/e` 不可用时，立即降级到 Git Bash 直接执行
+2. **未暂存更改阻止 pull**：先 `git stash --include-untracked`，pull 后 `git stash pop`
+3. **VERSION 提取失败**：`SOUL.md` 不在项目根目录，应从 `IDENTITY.md` 或硬编码版本号读取
+4. **TLS 证书问题**：WSL 环境必须加 `GIT_SSL_NO_VERIFY=1`
+
+### 备份脚本改进建议
+- 在 `auto_backup_github.sh` 中添加环境检查（WSL `/mnt/e` 是否可用）
+- 修改 VERSION 提取逻辑，优先从 `IDENTITY.md` 读取
+- 在脚本中添加 `git status --short` 检查，如果有未暂存更改先 stash
+
+### 自动化备份最佳实践
+1. 先 pull rebase，再 push
+2. 提交前检查是否有未追踪的大文件（如 `.coverage`）
+3. 备份日志记录在 `scripts/backup_log.txt`，便于追溯
+4. 自动化任务失败时，记录错误原因和解决方案到记忆文件
+
+### 2026-05-24 实际操作经验（精华）
+1. **后台任务超时留锁**：WSL/PowerShell 后台任务超时会在 `.git/index.lock` 留下锁文件，
+   下次执行前必须 `rm -f .git/index.lock` 清理，并 `pkill -f git` 杀残留进程
+2. **Rebase 冲突无交互解决**：终端是 dumb 时用 `GIT_EDITOR=true git rebase --continue` 绕过编辑器；
+   冲突文件 `git add` 后继续即可
+3. **WSL 脚本路径坑**：`auto_backup_github.sh` 里 `grep SOUL.md` 在 WSL `/mnt/e/` 下找不到文件，
+   因为 SOUL.md 实际在 `C:\Users\RunzeAI\.workbuddy\`；建议备份脚本改用 Git Bash 直接执行
+4. **推送被拒绝不要强推**：先 `git pull --rebase origin main`，解决冲突后再 push，强推会丢历史
+5. **Git Bash 比 WSL 脚本更稳定**：涉及路径、锁文件、环境的操作，用 Git Bash 直接执行比绕 WSL 脚本更可靠
+
