@@ -3,3 +3,4 @@
 [2026-05-25 23:10] ✅ 推送成功 | commit: 9169b0b | 56 files, 24331 insertions, 91 deletions | 备注: WSL /mnt/e 不可用，改用 Git Bash 直接执行
 [2026-05-26 23:02] ❌ 推送失败 | commit: a7ae42a (本地已提交) | 2 files, 9 insertions, 1 deletion | 原因: github.com:443 在中国大陆网络被阻断 (Connection timed out / Connection reset)，尝试3次均失败。SSH 可达但缺少密钥。待解决网络问题后手动 git push。
 [2026-05-27 23:05] ✅ 推送成功 | commit: e1862cc (已存在，无新提交) | 工作区干净 | 方式: Git Bash HTTPS 直推，WSL 脚本因路径解析失败自动降级
+[2026-05-28 23:09] ✅ 推送成功 | commit: 01b2610 | 3 files, 18 insertions | 方式: Git Bash HTTPS 直推（WSL /mnt/e 不可用降级）
