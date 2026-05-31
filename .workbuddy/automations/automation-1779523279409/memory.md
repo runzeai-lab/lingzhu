@@ -1,5 +1,12 @@
 # GitHub 自动备份 - 执行记忆
 
+## 2026-05-30 23:00
+- **状态**: ✅ 推送成功
+- **Commit**: f8b9d04 (`自动备份: V190.0 2026-05-30_23:00`)
+- **文件数**: 929 files changed, 135460 insertions(+), 133800 deletions(-)
+- **方式**: PowerShell + WSL HTTPS（Git Bash 443 阻断自动降级）
+- **关键发现**: Git Bash 的 `wsl` 命令被 MSYS 路径翻译破坏，必须通过 PowerShell 调用 WSL；WSL 网络栈可达 GitHub HTTPS（与 Git Bash/Windows 路由不同）
+
 ## 2026-05-28 23:07
 - **状态**: ✅ 推送成功
 - **Commit**: 01b2610 (`自动备份: V190.0 2026-05-28_23:07:21`)
