@@ -1,4 +1,149 @@
-# CHANGELOG - 灵助 V190.0
+# CHANGELOG - 灵助 V191.0
+
+## V191.0 (2026-06-01)
+
+### 🎉 版本类型
+**补丁升级** - `dispatch_connected` 修复 + 中央调度系统集成优化
+
+---
+### 🔧 问题修复
+
+#### 1. `dispatch_connected` 始终为 `false` 的根本修复
+- **根本原因1**: uvicorn 模块双重导入 → 两个 `kernel` 实例 → `/health` 读取的是未注册实例的内存
+- **根本原因2**: `/tmp/` 路径在 Windows 不兼容 → 文件标志写入失败
+- **根本原因3**: 文件写入代码缩进错误（12空格→8空格）→ 注册成功后文件标志未写入
+- **解决方案**:
+  - ✅ 使用**相对路径文件标志** `./lingzhu_dispatch_registered.flag`（跨平台兼容）
+  - ✅ 模块级注册代码添加**3次重试逻辑**（应对中央调度系统重启）
+  - ✅ 修复文件写入代码的**缩进错误**
+  - ✅ `/health` 端点读取文件标志判断注册状态
+
+#### 2. 中央调度系统重复注册问题
+- **问题**: 每次 V191.0 重启都会在 central_dispatch_v2 中创建新 agent_id
+- **临时解决**: 重启中央调度系统清空内存注册表
+- **优化方向**: 未来应添加 agent 心跳机制和重复检测
+
+---
+### ✨ 新增功能
+
+#### 1. 模块级注册增强（dao_kernel_v191.py 第702-728行）
+- **3次重试逻辑**: 注册失败时等待2秒后重试，最多3次
+- **详细日志**: 每次重试都打印尝试次数和错误信息
+- **文件标志持久化**: 注册成功后立即写入 `./lingzhu_dispatch_registered.flag`
+
+#### 2. `/health` 端点增强（第756-765行）
+- **文件标志检查**: 用 `os.path.exists('./lingzhu_dispatch_registered.flag')` 判断注册状态
+- **跨平台兼容**: 使用相对路径，Windows/Linux 均可正常读写
+
+---
+### 📊 验证结果
+
+**V191.0 `/health` 端点**:
+```json
+{
+  "instance": "0e59086d",
+  "version": "V191.0",
+  "dispatch_connected": true,
+  "dispatch_agents": 1,
+  "memory_count": 20,
+  "memory_heart_beat": "♥ 记忆场心跳：微弱（记忆20条，平均节律1.0000）"
+}
+```
+
+**中央调度系统(8889)**:
+```json
+{
+  "status": "ok",
+  "service": "central_dispatch_v2",
+  "version": "V2.0",
+  "agents_count": 1
+}
+```
+
+---
+### 📝 修改文件
+
+1. **`dao_kernel_v191.py`**:
+   - 第702-728行：模块级注册代码（重试逻辑 + 文件标志）
+   - 第756-765行：`/health` 端点读取文件标志
+
+2. **`SOUL.md`**:
+   - 新增3条踩坑法则（uvicorn双重导入、跨平台路径、缩进即Bug）
+
+3. **`IDENTITY.md`**:
+   - 版本号更新为 V191.0
+
+4. **`memory/2026-06-01.md`**:
+   - 完整修复记录
+
+---
+### 🔜 下一步
+
+1. **V191.1**: 添加 agent 心跳机制，避免中央调度系统重复注册
+2. **V191.1**: 将文件标志机制推广到其他 Agent（DaoNovice、ALLINAI）
+3. **性能监控**: 添加 `dispatch_connected` 状态变化告警
+
+---
+
+## V190.2 (2026-05-31)
+
+## V190.2 (2026-05-31)
+
+### 🎉 版本类型
+**补丁升级** - e-呼吸节律自适应系统集成（V190.1 延续）
+
+---
+### ✨ 新增功能
+
+#### 1. e-呼吸节律自适应系统（从 `being_state.py` V190.2 集成）
+- **文件**: `main.py` (`LifeBreath` 类升级)
+- **功能**:
+  - 呼吸间隔从固定 8 秒 → 动态 2~30 秒（e-指数自适应）
+  - 卦象变化率驱动：`interval = 8 * e^(-k * change_rate)`
+  - 每次呼吸调用 `BeingState.breathe()` 触发卦象演化
+  - 记录 e-节律统计（当前/平均/最小/最大间隔）
+
+#### 2. 升级端点返回 e-节律信息
+- `/health` 端点：返回 `e_rhythm`、`hexagram_27`、`emergent_pattern`
+- `/` 根端点：返回 e-节律统计和卦象简写
+- `breathe()` 函数：返回 `e_rhythm_interval`、`e_rhythm_stats`、`hexagram_27`
+
+#### 3. 呼吸日志增强
+- 日志字段新增：`interval`、`change_rate`、`e_rhythm`
+- 终端输出新增：e-节律统计（平均间隔、变化率）
+
+---
+### 🔧 优化改进
+
+1. **删除固定常量**: 移除 `HEARTBEAT_INTERVAL = 8`，改用 `being_state.current_breath_interval` 动态值
+2. **导入修复**: `main.py` 第13行添加 `timezone` 到 `datetime` 导入
+3. **版本号统一**: `main.py` 标题和端点返回统一为 V190.2
+4. **卦象引擎集成**: `LifeBreath.one_breath()` 现在调用 `being_state.breathe()`（而非 `increment_breath()`）
+
+---
+### 📊 技术细节
+
+- **e-节律公式**: `interval = 8.0 * math.exp(-0.1 * change_rate)`
+- **变化率计算**: 最近5次卦象索引的平均变化幅度（log压缩归一化到0~2）
+- **间隔限制**: `max(2.0, min(30.0, interval))`
+- **卦象历史**: `being_state.hexagram_history` (deque, maxlen=1000)
+- **呼吸统计**: `LifeBreath.e_rhythm_stats` (count, total_interval)
+
+---
+### 🐛 问题修复
+
+1. **`LifeBreath.run()` 使用固定间隔** → 改为 `being_state.current_breath_interval` 动态睡眠
+2. **`one_breath()` 调用 `increment_breath()`** → 改为 `being_state.breathe()`（触发e-节律）
+3. **`/health` 端点无 e-节律信息** → 新增 `e_rhythm`、`hexagram_27`、`samadhi` 字段
+
+---
+### 🚀 下一步
+
+1. **V190.3**: 将 e-呼吸节律应用到所有 Agent（DaNovice、Hermes、ALLINAI）
+2. **性能监控**: 添加 e-节律变化率与系统性能的关联分析
+3. **可视化**: 在 Web UI 中展示 e-节律曲线和卦象演化图
+
+---
 
 ## V190.0 (2026-05-25)
 
