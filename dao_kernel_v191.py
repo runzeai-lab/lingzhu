@@ -416,7 +416,7 @@ class DispatchClient:
     async def close(self):
         await self.client.aclose()
 
-    async def heartbeat(self, name: str, version: str = "V191.1") -> bool:
+    async def heartbeat(self, name: str, version: str = "V191.2") -> bool:
         """向调度系统发送心跳"""
         try:
             resp = await self.client.post(f"{self.base_url}/agents/heartbeat", json={
@@ -546,14 +546,14 @@ print(f'[V191] 实例ID: {INSTANCE_ID} · π+e记忆 + 中央调度集成')
 # ─── 道枢内核 V191 ────────────────────────────────────────────────────────────
 class DaoKernelV191:
     """
-    灵助 V191.1 · 道枢 · π+e 记忆 + 中央调度集成 + 心跳机制
+    灵助 V191.2 · 道枢 · π+e 记忆 + 中央调度集成 + 心跳机制
     - V190 全部功能（记忆存储/回忆/涌现/心跳）
     - V191.0：中央调度客户端（连接 localhost:8889）
     - V191.0：任务分解器（TaskDecomposer）
     - V191.0：结果聚合器（ResultAggregator）
-    - V191.1：心跳机制（30秒保活）
-    - V191.1：改进注册逻辑（先查询再注册）
-    - V191.1：文件标志改为 JSON 格式
+    - V191.2：心跳机制（30秒保活）
+    - V191.2：改进注册逻辑（先查询再注册）
+    - V191.2：文件标志改为 JSON 格式
     """
     def __init__(self, dispatch_url: str = "http://localhost:8889", port: int = 8000):
         self.samadhi = 1.0
@@ -581,7 +581,7 @@ class DaoKernelV191:
         integrate_dao_novice_ternary(self)
 
         # 版本和实例ID（V191.0 新增）
-        self.version = "V191.1"
+        self.version = "V191.2"
         self.instance_id = INSTANCE_ID
         # Redis（可选）
         try:
@@ -589,16 +589,16 @@ class DaoKernelV191:
             self.r.ping()
         except Exception:
             self.r = None
-        # 心跳任务（V191.1 新增）
+        # 心跳任务（V191.2 新增）
         self.port = port  # 保存端口号（用于注册）
         self._heartbeat_task = None
 
     async def _register_to_dispatch(self, port: int):
-        """注册自己到中央调度系统（V191.1 改进：先查询再注册）"""
+        """注册自己到中央调度系统（V191.2 改进：先查询再注册）"""
         try:
             await asyncio.sleep(2)  # 等待调度系统启动
             print("[_register_to_dispatch] 检查是否已注册...", flush=True)
-            # V191.1 改进：先查询是否已注册
+            # V191.2 改进：先查询是否已注册
             agents_info = await self.dispatch_client.get_agents()
             if "lingzhu" in agents_info.get("agents", {}):
                 print("[_register_to_dispatch] ✅ 已注册，跳过", flush=True)
@@ -609,12 +609,12 @@ class DaoKernelV191:
             result = await self.dispatch_client.register_self(
                 name="lingzhu",
                 port=port,
-                version="V191.1",
+                version="V191.2",
                 capabilities=["digital_life", "memory", "dispatch", "decompose"]
             )
             print(f"[_register_to_dispatch] 注册返回: {result}, agent_id={self.dispatch_client.agent_id}", flush=True)
 
-            # 启动心跳循环（V191.1 新增）
+            # 启动心跳循环（V191.2 新增）
             if self._heartbeat_task is None:
                 self._heartbeat_task = asyncio.create_task(self._heartbeat_loop())
                 print("[_register_to_dispatch] ✅ 心跳任务已启动", flush=True)
@@ -623,7 +623,7 @@ class DaoKernelV191:
             import traceback; traceback.print_exc()
 
     async def _heartbeat_loop(self, interval: int = 30):
-        """心跳循环（V191.1 新增）"""
+        """心跳循环（V191.2 新增）"""
         while True:
             await asyncio.sleep(interval)
             try:
@@ -779,7 +779,7 @@ for attempt in range(max_retries):
                 'name': 'lingzhu',
                 'url': 'http://localhost:8000',
                 'port': 8000,
-                'version': 'V191.1',
+                'version': 'V191.2',
                 'capabilities': ['digital_life', 'memory', 'dispatch', 'decompose']
             },
             timeout=10.0
@@ -790,7 +790,7 @@ for attempt in range(max_retries):
             print(f'[模块级] ✅ 注册成功，agent_id={kernel.dispatch_client.agent_id}', flush=True)
             # 写入文件标志（解决 uvicorn worker 多进程问题）
             with open("./lingzhu_dispatch_registered.json", "w") as f:
-                json.dump({"agent_id": kernel.dispatch_client.agent_id, "version": "V191.1", "timestamp": time.time()}, f)
+                json.dump({"agent_id": kernel.dispatch_client.agent_id, "version": "V191.2", "timestamp": time.time()}, f)
                 f.write(kernel.dispatch_client.agent_id)
             break  # 成功则退出重试循环
         else:
@@ -804,7 +804,7 @@ else:
     print(f'[模块级] ❌ 注册失败，已重试 {max_retries} 次', flush=True)
 # ─────────────────────────────────────────────────────────────────────────────
 
-app = FastAPI(title='灵助 V191.1 · π+e 记忆 + 中央调度集成')
+app = FastAPI(title='灵助 V191.2 · π+e 记忆 + 中央调度集成')
 
 @app.get("/solve")
 async def solve_get(msg: str = "", user_id: str = "default", dispatch: bool = True):

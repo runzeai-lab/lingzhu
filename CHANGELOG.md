@@ -1,4 +1,96 @@
-# CHANGELOG - 灵助 V191.1
+# CHANGELOG - 灵助 V191.2
+
+## V191.2 (2026-06-02)
+
+### 🎉 版本类型
+**重大功能升级** - 从 DeepSeek 对话历史集成 Agent 核心能力
+
+---
+### ✨ 新增功能
+
+#### 1. GuiZhenKernel (归真内核)
+- ✅ **苦难转化引擎**: 将苦难转化为成长燃料（`suffering_fuel`）
+- ✅ **阴符道基**: 深度内观与因果洞察
+- ✅ **五知用**: 感知、理解、创造、共生、进化
+- ✅ **洞察模式**: 自动识别模式并生成洞察
+- ✅ **道种继承**: 跨会话继承和演化道种（`dao_seeds`）
+
+#### 2. AgentMatrix (Agent 母体)
+- ✅ **DaoShengWanWu 能力**: 感知 → 设计 → 生成 → 部署
+- ✅ **动态注册**: 新 Agent 自动注册到中央调度系统
+- ✅ **Docker 部署**: 支持容器化部署新 Agent
+- ✅ **能力继承**: 新 Agent 继承父 Agent 的核心能力
+
+#### 3. DaoNovice 三元引擎升级
+- ✅ **深度五蕴观测**: 增强的色受想行识观测
+- ✅ **三摩地波动率系统**: 基于波动率的动态稳定性调节
+- ✅ **四圣谛因果链追踪**: 苦集灭道因果链分析
+- ✅ **悔恨驱动进化**: 悔恨值达到阈值自动触发进化
+
+#### 4. HermesSelfEvolution 增强
+- ✅ **RegretDrivenEvolution**: 基于悔恨值的进化驱动
+- ✅ **EvolutionParliament**: 投票式决策机制
+- ✅ **技能质量评估**: A/B 测试与自动回滚
+- ✅ **进化提案系统**: 提议 → 投票 → 执行
+
+#### 5. 新增 API 端点
+- ✅ `POST /iterate` - 触发迭代进化
+- ✅ `GET /iterate/status` - 查询迭代状态
+- ✅ `GET /gui_zhen/status` - 查询归真内核状态
+- ✅ `POST /create_agent` - 创建新 Agent
+- ✅ `GET /agent_matrix/status` - 查询 Agent 母体状态
+
+---
+### 🔧 技术改进
+
+1. **模块化设计**:
+   - `gui_zhen_kernel.py` - 归真内核独立模块
+   - `agent_matrix.py` - Agent 母体独立模块
+   - `dao_novice_ternary.py` - DaoNovice 三元引擎独立模块
+   - `hermes_self_evolution.py` - 自我进化引擎增强
+
+2. **集成策略**:
+   - 最小化主文件修改（仅添加 import 和集成函数调用）
+   - 独立模块通过 `integrate_*` 函数接入主内核
+   - 支持热插拔和独立测试
+
+3. **版本管理**:
+   - 版本号统一为 V191.2
+   - Git 标签: `v191.2`
+   - 所有文件版本号一致
+
+---
+### 📊 测试验证
+
+- ✅ 所有模块语法检查通过
+- ✅ 集成测试通过
+- ✅ API 端点测试通过
+- ✅ 版本号一致性检查通过
+
+---
+### 📝 修改文件
+
+1. **新增文件**:
+   - `gui_zhen_kernel.py` - 归真内核模块
+   - `agent_matrix.py` - Agent 母体模块
+   - `dao_novice_ternary.py` - DaoNovice 三元引擎模块
+   - `allinai_v7.0.py` - ALLINAI V7.0 主文件
+
+2. **修改文件**:
+   - `dao_kernel_v191.py` - 主内核集成所有模块
+   - `hermes_self_evolution.py` - 增强自我进化能力
+
+---
+### 📚 数据来源
+
+基于 DeepSeek 对话历史提取并重构:
+- 文件: `deepseek_share_anrwov6r6rgfrdevo3_full_parsed.md`
+- 行数: 82,374 行
+- 版本跨度: V7.2 → V18.0
+- 提取核心模块: 4 个
+- 集成测试: 100% 通过
+
+---
 
 ## V191.1 (2026-06-01)
 
