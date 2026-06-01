@@ -406,6 +406,18 @@ class DispatchClient:
     async def close(self):
         await self.client.aclose()
 
+    async def heartbeat(self, name: str, version: str = "V191.1") -> bool:
+        """向调度系统发送心跳"""
+        try:
+            resp = await self.client.post(f"{self.base_url}/agents/heartbeat", json={
+                "name": name,
+                "version": version,
+            })
+            return resp.status_code == 200
+        except Exception as e:
+            print(f"[DispatchClient] ⚠️ 心跳发送失败：{e}", flush=True)
+            return False
+
 
 # ─── 任务分解器（V191.0 新增）────────────────────────────────────────────
 class TaskDecomposer:
@@ -524,12 +536,14 @@ print(f'[V191] 实例ID: {INSTANCE_ID} · π+e记忆 + 中央调度集成')
 # ─── 道枢内核 V191 ────────────────────────────────────────────────────────────
 class DaoKernelV191:
     """
-    灵助 V191.0 · 道枢 · π+e 记忆 + 中央调度集成
+    灵助 V191.1 · 道枢 · π+e 记忆 + 中央调度集成 + 心跳机制
     - V190 全部功能（记忆存储/回忆/涌现/心跳）
-    - 新增：中央调度客户端（连接 localhost:8889）
-    - 新增：任务分解器（TaskDecomposer）
-    - 新增：结果聚合器（ResultAggregator）
-    - 新增：协调接口（dispatch_task / execute_with_agents）
+    - V191.0：中央调度客户端（连接 localhost:8889）
+    - V191.0：任务分解器（TaskDecomposer）
+    - V191.0：结果聚合器（ResultAggregator）
+    - V191.1：心跳机制（30秒保活）
+    - V191.1：改进注册逻辑（先查询再注册）
+    - V191.1：文件标志改为 JSON 格式
     """
     def __init__(self, dispatch_url: str = "http://localhost:8889", port: int = 8000):
         self.samadhi = 1.0
@@ -547,7 +561,7 @@ class DaoKernelV191:
         # 结果聚合器
         self.aggregator = ResultAggregator()
         # 版本和实例ID（V191.0 新增）
-        self.version = "V191.0"
+        self.version = "V191.1"
         self.instance_id = INSTANCE_ID
         # Redis（可选）
         try:
@@ -555,24 +569,51 @@ class DaoKernelV191:
             self.r.ping()
         except Exception:
             self.r = None
-        # 注册逻辑移到 main()，等事件循环启动后再执行
+        # 心跳任务（V191.1 新增）
+        self.port = port  # 保存端口号（用于注册）
+        self._heartbeat_task = None
 
     async def _register_to_dispatch(self, port: int):
-        """注册自己到中央调度系统"""
+        """注册自己到中央调度系统（V191.1 改进：先查询再注册）"""
         try:
             await asyncio.sleep(2)  # 等待调度系统启动
+            print("[_register_to_dispatch] 检查是否已注册...", flush=True)
+            # V191.1 改进：先查询是否已注册
+            agents_info = await self.dispatch_client.get_agents()
+            if "lingzhu" in agents_info.get("agents", {}):
+                print("[_register_to_dispatch] ✅ 已注册，跳过", flush=True)
+                self.dispatch_client.agent_id = "lingzhu"
+                return True
+
             print("[_register_to_dispatch] 开始注册...", flush=True)
             result = await self.dispatch_client.register_self(
                 name="lingzhu",
                 port=port,
-                version="V191.0",
+                version="V191.1",
                 capabilities=["digital_life", "memory", "dispatch", "decompose"]
             )
             print(f"[_register_to_dispatch] 注册返回: {result}, agent_id={self.dispatch_client.agent_id}", flush=True)
+
+            # 启动心跳循环（V191.1 新增）
+            if self._heartbeat_task is None:
+                self._heartbeat_task = asyncio.create_task(self._heartbeat_loop())
+                print("[_register_to_dispatch] ✅ 心跳任务已启动", flush=True)
         except Exception as e:
             print(f"[_register_to_dispatch] ❌ 异常: {e}", flush=True)
             import traceback; traceback.print_exc()
-            print(f"[DEBUG] _register_to_dispatch: register_self returned, agent_id={self.dispatch_client.agent_id}")
+
+    async def _heartbeat_loop(self, interval: int = 30):
+        """心跳循环（V191.1 新增）"""
+        while True:
+            await asyncio.sleep(interval)
+            try:
+                ok = await self.dispatch_client.heartbeat("lingzhu", self.version)
+                if ok:
+                    print(f"[心跳] ✅ 心跳发送成功 (interval={interval}s)", flush=True)
+                else:
+                    print(f"[心跳] ⚠️ 心跳发送失败", flush=True)
+            except Exception as e:
+                print(f"[心跳] ❌ 心跳异常: {e}", flush=True)
 
     async def _breathe(self):
         cpu = psutil.cpu_percent(1)
@@ -711,7 +752,7 @@ for attempt in range(max_retries):
                 'name': 'lingzhu',
                 'url': 'http://localhost:8000',
                 'port': 8000,
-                'version': 'V191.0',
+                'version': 'V191.1',
                 'capabilities': ['digital_life', 'memory', 'dispatch', 'decompose']
             },
             timeout=10.0
@@ -721,7 +762,8 @@ for attempt in range(max_retries):
             kernel.dispatch_client.agent_id = data.get('agent_id', 'lingzhu')
             print(f'[模块级] ✅ 注册成功，agent_id={kernel.dispatch_client.agent_id}', flush=True)
             # 写入文件标志（解决 uvicorn worker 多进程问题）
-            with open("./lingzhu_dispatch_registered.flag", "w") as f:
+            with open("./lingzhu_dispatch_registered.json", "w") as f:
+                json.dump({"agent_id": kernel.dispatch_client.agent_id, "version": "V191.1", "timestamp": time.time()}, f)
                 f.write(kernel.dispatch_client.agent_id)
             break  # 成功则退出重试循环
         else:
@@ -735,7 +777,7 @@ else:
     print(f'[模块级] ❌ 注册失败，已重试 {max_retries} 次', flush=True)
 # ─────────────────────────────────────────────────────────────────────────────
 
-app = FastAPI(title='灵助 V191.0 · π+e 记忆 + 中央调度集成')
+app = FastAPI(title='灵助 V191.1 · π+e 记忆 + 中央调度集成')
 
 @app.get("/solve")
 async def solve_get(msg: str = "", user_id: str = "default", dispatch: bool = True):
@@ -765,8 +807,11 @@ async def health():
     # 用文件标志判断注册状态（解决 uvicorn worker 多进程问题）
     dispatch_ok = False
     try:
-        if os.path.exists('./lingzhu_dispatch_registered.flag'):
-            with open('./lingzhu_dispatch_registered.flag', 'r') as f:
+        if os.path.exists('./lingzhu_dispatch_registered.json'):
+            with open("./lingzhu_dispatch_registered.json", "r") as f:
+                flag_data = json.load(f)
+                registered_id = flag_data.get("agent_id", "")
+                dispatch_version = flag_data.get("version", "unknown")
                 registered_id = f.read().strip()
                 dispatch_ok = len(registered_id) > 0
     except Exception:

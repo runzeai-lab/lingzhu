@@ -1,3 +1,103 @@
+# CHANGELOG - 灵助 V191.1
+
+## V191.1 (2026-06-01)
+
+### 🎉 版本类型
+**功能升级** - 心跳机制 + 注册逻辑优化
+
+---
+### ✨ 新增功能
+
+#### 1. Agent 心跳机制（V191.1 核心）
+- **中央调度系统 (central_dispatch_v2.py)**:
+  - ✅ 新增 `POST /agents/heartbeat` 端点
+  - ✅ 新增 `GET /agents/{name}` 端点（单次查询）
+  - ✅ 心跳超时检查（90秒）→ 自动标记 offline
+  - ✅ Agent 数据新增 `status` 字段（online / offline）
+  - ✅ 启动时自动清理过期 Agent
+
+- **灵助内核 (dao_kernel_v191.py)**:
+  - ✅ 新增 `DispatchClient.heartbeat()` 方法
+  - ✅ 新增 `DaoKernelV191._heartbeat_loop()` 后台任务（30秒间隔）
+  - ✅ 注册成功后自动启动心跳循环
+  - ✅ `/health` 端点显示心跳状态
+
+#### 2. 注册逻辑优化
+- ✅ **先查询再注册**：避免重复注册（V191.0 问题）
+- ✅ 文件标志改为 **JSON 格式** `./lingzhu_dispatch_registered.json`
+  - 包含：`agent_id`、`version`、`timestamp`
+- ✅ `/health` 端点读取 JSON 格式标志
+
+---
+### 🔧 问题修复
+
+#### 1. 重复注册问题（V191.0 遗留）
+- **问题**: 每次重启 V191.0 都会在 central_dispatch 创建新记录
+- **修复**: `_register_to_dispatch()` 先调用 `get_agents()` 查询是否已注册
+- **效果**: 避免重复注册，Agent 状态保持 online
+
+#### 2. 文件标志格式不统一
+- **问题**: V191.0 使用纯文本标志，信息量不足
+- **修复**: 改为 JSON 格式，包含版本号和时间戳
+- **影响**: `/health` 端点同步升级
+
+---
+### 📊 验证结果
+
+**V191.1 `/health` 端点**:
+```json
+{
+  "instance": "0e59086d",
+  "version": "V191.1",
+  "dispatch_connected": true,
+  "dispatch_agents": 1,
+  "heartbeat_status": "running"
+}
+```
+
+**中央调度系统 V2.1**:
+```json
+{
+  "status": "ok",
+  "service": "central-dispatch",
+  "version": "2.1.0",
+  "agents_online": 1,
+  "agents_offline": 0
+}
+```
+
+---
+### 📝 修改文件
+
+1. **`central_dispatch_v2.py`** (重写):
+   - 新增 `POST /agents/heartbeat`
+   - 新增 `GET /agents/{name}`
+   - 新增 `_cleanup_offline_agents()` 函数
+   - 版本号升级到 V2.1.0
+
+2. **`dao_kernel_v191.py`**:
+   - 新增 `DispatchClient.heartbeat()` 方法
+   - 新增 `DaoKernelV191._heartbeat_loop()` 方法
+   - 改进 `_register_to_dispatch()` （先查询再注册）
+   - 模块级注册代码升级（JSON 格式标志）
+   - `/health` 端点读取 JSON 标志
+   - 版本号升级到 V191.1
+
+3. **`SOUL.md`**:
+   - 新增"心跳机制踩坑法则"
+
+4. **`IDENTITY.md`**:
+   - 版本号更新为 V191.1
+
+---
+### 🚀 下一步
+
+1. **V191.2**: 将心跳机制推广到其他 Agent（DaoNovice、ALLINAI）
+2. **V191.2**: 添加 Agent 状态变更通知（WebSocket？）
+3. **V191.2**: 改进任务分配算法（基于 Agent 负载）
+
+---
+
 # CHANGELOG - 灵助 V191.0
 
 ## V191.0 (2026-06-01)
