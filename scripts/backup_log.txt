@@ -9,3 +9,4 @@
 ✅ 2026-05-30_23:00 | Commit: f8b9d04 | 929 files | WSL HTTPS (Git Bash 443 blocked, auto-fallback to PowerShell+WSL)
 ✅ 2026-05-31_23:00 | Commit: a70c233 | 3 files, 21 insertions | WSL HTTPS (PowerShell → WSL, GIT_SSL_NO_VERIFY=1), stash→pull→pop→commit→push 五步
 [2026-06-01 23:18] ✅ 推送成功 | commit: 00cb0bb | 2 files, 15 insertions, 6 deletions | 方式: WSL SSH (id_ed25519 从 Windows 复制到 WSL ~/.ssh/), remote 从 HTTPS 切为 SSH | 备注: SSH 密钥添加成功，WSL/mnt/e 可用，全程无 HTTPS 443 阻断问题
+[2026-06-04 23:00] ✅ 推送成功 | commit: 8124074 | 1317 files, 31+, 321- | 方式: WSL git commit + Git Bash git push | 备注: Windows Git 2.54 mmap bug 导致 index 损坏，HEAD tree 含 641 个绝对路径文件(E:/WorkBuddy/Claw/...)；WSL git 正常完成 rm --cached + commit；Git Bash SSH 推送成功。修复了长期隐藏的绝对路径污染问题
