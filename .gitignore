@@ -19,6 +19,10 @@ Thumbs.db
 # Database
 *.db
 
+# Corrupted paths (mmap workaround)
+E*/
+E:*/*
+
 # Temp files
 *.tmp
 *.bak
