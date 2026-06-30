@@ -3,6 +3,7 @@
 [2026-05-25 23:10] ✅ 推送成功 | commit: 9169b0b | 56 files, 24331 insertions, 91 deletions | 备注: WSL /mnt/e 不可用，改用 Git Bash 直接执行
 [2026-05-26 23:02] ❌ 推送失败 | commit: a7ae42a (本地已提交) | 2 files, 9 insertions, 1 deletion | 原因: github.com:443 在中国大陆网络被阻断 (Connection timed out / Connection reset)，尝试3次均失败。SSH 可达但缺少密钥。待解决网络问题后手动 git push。
 [2026-05-27 23:05] ✅ 推送成功 | commit: e1862cc (已存在，无新提交) | 工作区干净 | 方式: Git Bash HTTPS 直推，WSL 脚本因路径解析失败自动降级
+[2026-06-10 22:00] ✅ 项目索引更新 | 1442 文件, 251 目录, 2287 关键词 | PROJECT_INDEX.md + _search_index.json | 参数修正: 去掉了无效的 --no-ollama 标志
 [2026-06-01 23:18] ✅ 推送成功 | commit: 00cb0bb | 2 files, 15+, 6- | 方式: WSL SSH (remote 已切 git@github.com)
 [2026-06-02 23:14] ✅ 推送成功 | commit: a1a3dfa | 4 files, 87+, 118- | 方式: WSL SSH | 备注: 脚本 CRLF→LF 修复后执行成功
 [2026-05-28 23:09] ✅ 推送成功 | commit: 01b2610 | 3 files, 18 insertions | 方式: Git Bash HTTPS 直推（WSL /mnt/e 不可用降级）
@@ -12,3 +13,12 @@
 [2026-06-04 23:00] ✅ 推送成功 | commit: 8124074 | 1317 files, 31+, 321- | 方式: WSL git commit + Git Bash git push | 备注: Windows Git 2.54 mmap bug 导致 index 损坏，HEAD tree 含 641 个绝对路径文件(E:/WorkBuddy/Claw/...)；WSL git 正常完成 rm --cached + commit；Git Bash SSH 推送成功。修复了长期隐藏的绝对路径污染问题
 [2026-06-05 23:36:39] ✅ GitHub备份成功 | Commit: ba73939 (自动备份: V191.2) | 方式: Git Bash SSH push | 注意: git add使用WSL绕过Git Bash mmap bug
 [2026-06-06 02:05:55] ✅ 项目索引更新成功 | 1278 文件, 212 目录, 1959 关键词 | 生成: PROJECT_INDEX.md, _search_index.json
+[2026-06-07 23:01] ✅ GitHub备份完成（无变更） | 最新 commit: f7b1a6d (自动备份: V191.2) | 工作区干净，无新提交 | 方式: WSL git add/commit (MSYS_NO_PATHCONV=1) | 备注: Git Bash mmap bug 仍存在，WSL SSH 无密钥
+[2026-06-09 02:10] 项目索引更新 ✅ 成功 | 文件数: 1413 | 目录数: 251 | 关键词: 2236 | 生成: PROJECT_INDEX.md (4561B), _search_index.json (1158KB)
+[2026-06-11 02:01] 项目索引更新: ✅ 成功 | 文件数: 3163 | 目录数: 460 | 关键词: 4906 | 生成: PROJECT_INDEX.md, _search_index.json
+[2026-06-12 02:01] 项目索引更新: ✅ 成功 | 文件数: 3337 | 目录数: 487 | 关键词: 5086 | 生成: PROJECT_INDEX.md, _search_index.json | +174文件, +27目录, +180关键词
+[2026-06-13 02:06:54] 项目索引更新: ✅ 成功 | 文件数: 3337 | 目录数: 487 | 关键词: 5086 | 输出: PROJECT_INDEX.md, _search_index.json
+[2026-06-14 02:00] 项目索引更新 - ✅ 成功 | 文件: 3337 | 目录: 487 | 关键词: 5086 | 文件数与上次持平
+2026-06-15 02:06:38 - 项目索引更新: ✅ 成功 | 文件数: 3337 | 目录: 487 | 关键词: 5086 | 输出: PROJECT_INDEX.md, _search_index.json
+[2026-06-16 02:08:58] 项目索引更新: ✅ 成功 | 文件数: 3337 | 目录: 487 | 关键词: 5086 | 输出: PROJECT_INDEX.md (3988B), _search_index.json (3126354B) | 文件数与上次持平
+[2026-06-17 02:09:40] 项目索引更新: ✅ 成功 | 文件数: 3337 | 目录: 487 | 关键词: 5086 | 输出: PROJECT_INDEX.md (3988B), _search_index.json (3126353B) | 文件数与上次持平

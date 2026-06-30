@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-06-23T23:42:09.016092",
+  "version": "V7.0 (\u4fee\u6b63\u548c\u6001\u5b9a\u4e49)",
+  "N": 100000,
+  "he_definition": "|gap[i]-gap[i-1]|/gap[i-1] <= 0.3",
+  "results": {
+    "yin_pct": 39.54939549395494,
+    "he_pct": 17.594175941759417,
+    "yang_pct": 42.85642856428564,
+    "alternating_pct": 27.667830034901048,
+    "top4_pct": 1.5220152201522015,
+    "trigram_top10": {

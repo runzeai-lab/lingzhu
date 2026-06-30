@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "lingzhu"
+version = "181.0"
+description = "灵助 AI 管家系统 V181+ — 多Agent统一管理系统"
+authors = ["Runze <runze@lingzhu.ai>"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.11"
+# Web 框架
+fastapi = ">=0.100"
+uvicorn = {version = ">=0.23", extras = ["standard"]}
+pydantic = ">=2.0"
+# Web 框架
+flask = ">=3.0"
+flask-cors = ">=4.0"
+# HTTP 客户端
+httpx = ">=0.24"
+requests = ">=2.31"
+# 系统与工具
+psutil = ">=5.9"
+# AI/LLM（按需启用）
+# anthropic = ">=0.30"
+# openai = ">=1.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=7.0"
+pytest-asyncio = ">=0.21"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

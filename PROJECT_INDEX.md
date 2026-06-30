@@ -1,97 +1,119 @@
 # 项目索引
-生成时间: 2026-06-06 02:05:55
+生成时间: 2026-06-17 02:08:39
 
 ## 文件类型统计
-- (无扩展名): 880 个
-- .md: 150 个
-- .py: 57 个
+- .py: 1691 个
+- (无扩展名): 1081 个
+- .md: 174 个
+- .png: 56 个
+- .txt: 54 个
+- .typed: 50 个
 - .log: 41 个
 - .old: 41 个
-- .png: 39 个
-- .yml: 15 个
-- .json: 13 个
+- .exe: 24 个
+- .json: 17 个
+- .yml: 16 个
+- .pyd: 11 个
 - .jpg: 10 个
+- .pyi: 7 个
+- .sh: 6 个
 - .db: 6 个
 - .db-journal: 6 个
-- .sh: 5 个
+- .ps1: 3 个
+- .pxd: 3 个
+- .js: 3 个
+- .bat: 3 个
 - .pma: 3 个
 - .baj: 3 个
 - .baf: 3 个
-- .ps1: 2 个
-- .txt: 2 个
+- .toml: 2 个
+- .TAG: 2 个
+- .pem: 2 个
+- .pyx: 2 个
+- .c: 2 个
+- .APACHE: 2 个
+- .BSD: 2 个
+- .pdf: 2 个
+- .lock: 1 个
 - .html: 1 个
-- .TAG: 1 个
+- .cfg: 1 个
+- .pth: 1 个
+- .rst: 1 个
+- .css: 1 个
+- .fish: 1 个
+- .nu: 1 个
+- .xsh: 1 个
 
 ## 目录列表
 - .playwright-cli/
 - .pytest_cache/
 - .pytest_cache\v/
 - .pytest_cache\v\cache/
-- E/
-- E\WorkBuddy/
-- E\WorkBuddy\Claw/
-- E\WorkBuddy\Claw\debug_screenshots/
-- E\WorkBuddy\Claw\debug_screenshots_v2/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\AutofillAiModelCache/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\AutofillStrikeDatabase/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\BudgetDatabase/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Cache/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Cache\Cache_Data/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Cache\Cache_Data\index-dir/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Cache\No_Vary_Search/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\ClientCertificates/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Code Cache/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Code Cache\js/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Code Cache\js\index-dir/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Code Cache\wasm/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Code Cache\wasm\index-dir/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\DawnGraphiteCache/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\DawnWebGPUCache/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Extension Rules/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Extension Scripts/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Extension State/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\File System/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\File System\000/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\File System\000\t/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\File System\000\t\Paths/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\File System\Origins/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\GCM Store/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\GPUCache/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Local Storage/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Local Storage\leveldb/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\PersistentOriginTrials/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Segmentation Platform/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Segmentation Platform\SegmentInfoDB/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Segmentation Platform\SignalDB/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Segmentation Platform\SignalStorageConfigDB/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Session Storage/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Sessions/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Shared Dictionary/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Shared Dictionary\cache/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Shared Dictionary\cache\index-dir/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Site Characteristics Database/
-- E\WorkBuddy\Claw\xiaohongshu_user_data_v2\Default\Sync Data/
+- .venv/
+- .venv\Include/
+- .venv\Lib/
+- .venv\Lib\site-packages/
+- .venv\Lib\site-packages\_pytest/
+- .venv\Lib\site-packages\_pytest\_code/
+- .venv\Lib\site-packages\_pytest\_io/
+- .venv\Lib\site-packages\_pytest\_py/
+- .venv\Lib\site-packages\_pytest\assertion/
+- .venv\Lib\site-packages\_pytest\config/
+- .venv\Lib\site-packages\_pytest\mark/
+- .venv\Lib\site-packages\_yaml/
+- .venv\Lib\site-packages\annotated_doc/
+- .venv\Lib\site-packages\annotated_doc-0.0.4.dist-info/
+- .venv\Lib\site-packages\annotated_doc-0.0.4.dist-info\licenses/
+- .venv\Lib\site-packages\annotated_types/
+- .venv\Lib\site-packages\annotated_types-0.7.0.dist-info/
+- .venv\Lib\site-packages\annotated_types-0.7.0.dist-info\licenses/
+- .venv\Lib\site-packages\anyio/
+- .venv\Lib\site-packages\anyio-4.13.0.dist-info/
+- .venv\Lib\site-packages\anyio-4.13.0.dist-info\licenses/
+- .venv\Lib\site-packages\anyio\_backends/
+- .venv\Lib\site-packages\anyio\_core/
+- .venv\Lib\site-packages\anyio\abc/
+- .venv\Lib\site-packages\anyio\streams/
+- .venv\Lib\site-packages\blinker/
+- .venv\Lib\site-packages\blinker-1.9.0.dist-info/
+- .venv\Lib\site-packages\certifi/
+- .venv\Lib\site-packages\certifi-2026.5.20.dist-info/
+- .venv\Lib\site-packages\certifi-2026.5.20.dist-info\licenses/
+- .venv\Lib\site-packages\charset_normalizer/
+- .venv\Lib\site-packages\charset_normalizer-3.4.7.dist-info/
+- .venv\Lib\site-packages\charset_normalizer-3.4.7.dist-info\licenses/
+- .venv\Lib\site-packages\charset_normalizer\cli/
+- .venv\Lib\site-packages\click/
+- .venv\Lib\site-packages\click-8.4.1.dist-info/
+- .venv\Lib\site-packages\click-8.4.1.dist-info\licenses/
+- .venv\Lib\site-packages\colorama/
+- .venv\Lib\site-packages\colorama-0.4.6.dist-info/
+- .venv\Lib\site-packages\colorama-0.4.6.dist-info\licenses/
+- .venv\Lib\site-packages\colorama\tests/
+- .venv\Lib\site-packages\dotenv/
+- .venv\Lib\site-packages\fastapi/
+- .venv\Lib\site-packages\fastapi-0.136.3.dist-info/
+- .venv\Lib\site-packages\fastapi-0.136.3.dist-info\licenses/
+- .venv\Lib\site-packages\fastapi\.agents/
 
 ## 最近修改文件 (TOP 20)
 - scripts\backup_log.txt
 - _search_index.json
 - PROJECT_INDEX.md
-- CHANGELOG.md
-- xiaohongshu_user_data\ShaderCache\README.md
-- xiaohongshu_user_data\GrShaderCache\README.md
-- xiaohongshu_user_data\segmentation_platform\README.md
-- xiaohongshu_user_data\extensions_crx_cache\README.md
-- xiaohongshu_user_data\GraphiteDawnCache\README.md
-- xiaohongshu_user_data\Default\README.md
-- tests\sandbox\README.md
-- xiaohongshu_images\README.md
-- xiaohongshu_user_data\README.md
-- xiaohongshu_user_data\component_crx_cache\README.md
-- scripts\README.md
-- tests\README.md
-- output\README.md
-- sandbox\README.md
-- global_wisdom_knowledge_base\本土智慧\README.md
-- global_wisdom_knowledge_base\犹太文化\README.md
+- .venv\Lib\site-packages\itsdangerous-2.2.0.dist-info\INSTALLER
+- .venv\Lib\site-packages\itsdangerous-2.2.0.dist-info\METADATA
+- .venv\Lib\site-packages\itsdangerous-2.2.0.dist-info\RECORD
+- .venv\Lib\site-packages\itsdangerous-2.2.0.dist-info\WHEEL
+- .venv\Lib\site-packages\itsdangerous-2.2.0.dist-info\LICENSE.txt
+- .venv\Lib\site-packages\itsdangerous\exc.py
+- .venv\Lib\site-packages\itsdangerous\py.typed
+- .venv\Lib\site-packages\itsdangerous\serializer.py
+- .venv\Lib\site-packages\itsdangerous\signer.py
+- .venv\Lib\site-packages\itsdangerous\timed.py
+- .venv\Lib\site-packages\itsdangerous\url_safe.py
+- .venv\Lib\site-packages\itsdangerous\encoding.py
+- .venv\Lib\site-packages\itsdangerous\_json.py
+- .venv\Lib\site-packages\itsdangerous\__init__.py
+- .venv\Lib\site-packages\markupsafe-3.0.3.dist-info\INSTALLER
+- .venv\Lib\site-packages\markupsafe-3.0.3.dist-info\METADATA
+- .venv\Lib\site-packages\markupsafe-3.0.3.dist-info\RECORD

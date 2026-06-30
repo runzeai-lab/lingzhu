@@ -33,3 +33,4 @@ check_*.py
 add_*.py
 test_*.sh
 test_*.py
+agent_s3
