@@ -23,3 +23,11 @@
 - **文件数**: 2 files changed, 15 insertions(+), 6 deletions(-)
 - **方式**: WSL SSH 推送
 - **备注**: remote 已永久切为 SSH，不再受 HTTPS 443 阻断影响
+
+## 2026-07-02 16:07
+- **状态**: ✅ Everything up-to-date
+- **Commit**: 611eff3 (`auto-backup: V191.4 2026-06-30_23:11:57`)
+- **文件数**: 0 新变更（仓库已完全同步）
+- **方式**: WSL git 验证 working tree clean + Git Bash SSH push 认 remote up-to-date
+- **踩坑**: Windows Git 2.54 mmap bug 导致 `git status`/`git add -A` 失效，`GIT_DISABLE_MMAP=1` 可绕过 status 但 add -A 仍崩溃；WSL git 正常运行无 mmap 问题；WSL 无 SSH 密钥无法 pull/push，需 Git Bash 做 push
+- **经验**: Windows Git mmap bug 是持久性问题，备份流程应始终优先 WSL git 做 commit 操作 + Git Bash SSH 做 push

@@ -59,3 +59,10 @@
 4. **推送被拒绝不要强推**：先 `git pull --rebase origin main`，解决冲突后再 push，强推会丢历史
 5. **Git Bash 比 WSL 脚本更稳定**：涉及路径、锁文件、环境的操作，用 Git Bash 直接执行比绕 WSL 脚本更可靠
 
+
+### 2026-07-02 Windows Git mmap bug 升级认知
+1. **Windows Git 2.54 mmap bug 是持久性问题**：`git status`/`git add -A`/`git read-tree` 均会触发 `mmap failed: Invalid argument`
+2. **`GIT_DISABLE_MMAP=1` 仅部分有效**：可绕过 `git status`，但 `git add -A` 仍会崩溃
+3. **WSL git 完全无此问题**：所有 git 操作在 WSL 中正常执行，是 commit 操作的首选环境
+4. **WSL 缺 SSH 密钥**：push/pull via SSH 需通过 Git Bash 执行
+5. **最佳备份流程**：WSL git (commit) + Git Bash SSH (push)，沿用 2026-06-04 建立的模式
