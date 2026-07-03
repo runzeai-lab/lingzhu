@@ -1,5 +1,14 @@
 # GitHub 自动备份 - 执行记忆
 
+## 2026-07-03 23:00
+- **状态**: ✅ 推送成功（双 commit）
+- **Commits**: da89a42 (cleanup 642 abs-path files) + d491b6d (log update)
+- **文件数**: 646 + 1 = 647 files, 35 insertions, 1595 deletions
+- **变更文件**: automation memory + MEMORY.md + backup_log.txt + 642 个 E:/ 绝对路径文件删除
+- **方式**: WSL git add -u + commit + Git Bash SSH push
+- **踩坑**: 642 个历史误跟踪的 E:/ 绝对路径文件（debug_screenshots, xiaohongshu_user_data_v2/v3, nul 等）一直存在 index 中未清理。每次备份都报"被删除"状态。`git update-index --force-remove` 对 E:/README.md 报"outside repository"错误，但 `git add -u` 可以接受文件系统中的"已删除"状态。解决方案：批量 `git add -u` 把所有 deletion 暂存，然后 commit 清理。
+- **修复方案**: 建立 `git add -u` 工作流处理误跟踪的绝对路径文件
+
 ## 2026-07-02 23:01
 - **状态**: ✅ 推送成功
 - **Commit**: 200a9a3 (`auto-backup: V191.4 2026-07-02_23:01:34`)
