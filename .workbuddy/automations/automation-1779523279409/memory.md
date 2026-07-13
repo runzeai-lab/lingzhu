@@ -56,3 +56,11 @@
 - **方式**: WSL git 验证 working tree clean + Git Bash SSH push 认 remote up-to-date
 - **踩坑**: Windows Git 2.54 mmap bug 导致 `git status`/`git add -A` 失效，`GIT_DISABLE_MMAP=1` 可绕过 status 但 add -A 仍崩溃；WSL git 正常运行无 mmap 问题；WSL 无 SSH 密钥无法 pull/push，需 Git Bash 做 push
 - **经验**: Windows Git mmap bug 是持久性问题，备份流程应始终优先 WSL git 做 commit 操作 + Git Bash SSH 做 push
+
+## 2026-07-14 03:05
+- **状态**: ✅ 推送成功
+- **Commit**: 32b27ce (`auto-backup: V191.4 2026-07-14_03:05:34`)
+- **文件数**: 2 files changed, 9 insertions(+)
+- **变更文件**: .workbuddy/automations/automation-1779523279409/memory.md + scripts/backup_log.txt
+- **方式**: Git Bash SSH push（直接 `git push origin main`，id_ed25519 密钥，exit=0）
+- **备注**: 原 WSL 脚本 `auto_backup_github.sh` 不存在，且本沙箱中 `wsl` 无法访问 `/mnt/e/WorkBuddy/Claw`（路径被 MSYS 错误转换、E: 在 WSL 不可见），故降级为 Git Bash 直连。提交前清理了 2 个陈旧锁文件（`.git/HEAD.lock`、`refs/heads/main.lock`，源自 7-05 后台任务超时）。仅 2 个 metadata 文件改动，`git status` 未触发 mmap bug，无需 WSL。
