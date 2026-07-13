@@ -27,3 +27,4 @@
 [2026-07-03 23:00] ✅ 推送成功 | commit: da89a42 (auto-backup: V191.4 - cleanup 642 abs-path files) | 646 files, 34+, 1595- | 方式: WSL git add -u + commit + Git Bash SSH push | 备注: 清理历史误跟踪的 642 个 E:/ 绝对路径文件（debug_screenshots + xiaohongshu_user_data_v2/v3 等），修复"outside repository"误判
 [2026-07-04 23:01] ✅ 推送成功 | commit: 2548331 (auto-backup: V191.4) | 1 file, 8 insertions | 方式: WSL git commit + Git Bash SSH push | 备注: 仅新增 .workbuddy/memory/2026-07-02.md，工作区轻量
 [2026-07-14 03:05] ✅ 推送成功 | commit: 32b27ce (auto-backup: V191.4) | 2 files, 9 insertions | 方式: Git Bash SSH push (WSL 脚本缺失→降级) | 备注: 清理 2026-07-04 遗留 staged 记录 + 移除 .git 死锁(HEAD.lock/main.lock)；原 WSL 脚本不存在且 WSL 不可见 E:，直接 Git Bash SSH 推送成功
+[2026-07-14 03:08] ✅ 推送成功 | commit: 待生成 | 1 file (2026-07-14.md, 含03:05记录) | 方式: Git Bash SSH push (WSL 脚本存在但 `wsl` 命令在沙箱不可用→降级，路径被 MSYS 错误转换) | 备注: 两次运行 WSL 脚本均 exit 127 失败；沿用 03:05 已验证的 Git Bash 直连方案等价执行脚本逻辑（add→commit→push）
