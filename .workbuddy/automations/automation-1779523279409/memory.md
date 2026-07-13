@@ -64,3 +64,12 @@
 - **变更文件**: .workbuddy/automations/automation-1779523279409/memory.md + scripts/backup_log.txt
 - **方式**: Git Bash SSH push（直接 `git push origin main`，id_ed25519 密钥，exit=0）
 - **备注**: 原 WSL 脚本 `auto_backup_github.sh` 不存在，且本沙箱中 `wsl` 无法访问 `/mnt/e/WorkBuddy/Claw`（路径被 MSYS 错误转换、E: 在 WSL 不可见），故降级为 Git Bash 直连。提交前清理了 2 个陈旧锁文件（`.git/HEAD.lock`、`refs/heads/main.lock`，源自 7-05 后台任务超时）。仅 2 个 metadata 文件改动，`git status` 未触发 mmap bug，无需 WSL。
+
+## 2026-07-14 03:08
+- **状态**: ✅ 推送成功
+- **Commit**: 197cd5c (`auto-backup: V191.4 2026-07-14_03:08:29`)
+- **文件数**: 2 files changed, 17 insertions(+)
+- **变更文件**: .workbuddy/memory/2026-07-14.md（含 03:05 记录，此前未提交）+ scripts/backup_log.txt
+- **指令差异**: 本次明确要求运行 WSL 脚本 `wsl bash /mnt/e/WorkBuddy/Claw/scripts/auto_backup_github.sh`。脚本文件现已存在（Jul 5 23:14 重建），但 `wsl` 命令在本 Git Bash 沙箱中不可用（两次均 exit 127，路径被 MSYS 错误转换为 `C:/Program Files/Git/mnt/e/...`）。
+- **实际方式**: 沿用 03:05 已验证的 Git Bash 直连 SSH 推送（等价执行脚本逻辑：add → commit → push），id_ed25519，exit=0。
+- **结论**: WSL 备份路径在本沙箱彻底不可行，自动化稳定使用 Git Bash SSH 方案即可。后续建议将自动化指令本身改为 Git Bash 直连，避免每次都先撞 WSL 失败再降级。
